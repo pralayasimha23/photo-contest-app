@@ -1,0 +1,424 @@
+<%-include('../partials/admin_header');-%>
+
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-6">
+                    <h2>Campaign Form</h2>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a>Campaign Form</a>
+                        </li>
+                        <li class="breadcrumb-item active">
+                            <strong> Create Campaign</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-6 mt-5" >
+                    <% if(messages.success) { %>
+                        <div class="alert alert-success alert-dismissible fade show">
+                           
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <% messages.success.forEach(function(success){ %>
+                            <div><%= success.msg %> <a href="photoapp/<%= Campname.toLowerCase().replace(/  +/g, ' ').replace(/\s/g, '-') %>"> View Your Campaign</a></div>
+                         <% }); %>
+                        </div>
+
+                        <% } %>
+                        
+                        <% if(messages.errors) { %>
+                        <div class="alert alert-danger alert-dismissible fade show">
+                           
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <% messages.errors.forEach(function(error){ %>
+                            <div><%= error.msg %> View Campaign</div>
+                            <% }); %>
+                        </div>
+                        <% } %>
+                        
+                        <% if(messages.info) { %>
+                        <div class="alert alert-info alert-dismissible fade show">
+                            
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              <% messages.info.forEach(function(info){ %>
+                              <div><%= info.msg %></div>
+                               <% }); %>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+
+      
+    
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <form  class="form-validate-summernote" id="form" enctype="multipart/form-data" action="/create-photo-campaign" method="POST">
+            <div class="row">
+            <div class="col-lg-7">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Campaign Basic Details</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                           </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                 <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="scrolltop ibox-content">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                            <div class="form-group  row"><label class="col-sm-2 col-form-label">Campaign Name</label>
+
+                                <div class="col-sm-10"><input type="text" name="campname" placeholder="Campaign Name" class="form-control" required></div>
+                            </div>
+
+                           
+                            <div class="hr-line-dashed"></div>
+                            <div class="form-group  row"><label class="col-sm-2 col-form-label">Title </label>
+
+                                <div class="col-sm-10"><input type="text" name="title" placeholder="Campaign Title" class="form-control" required></div>
+                            </div>
+                            <div class="hr-line-dashed"></div>
+
+                            <div class="form-group row"><label class="col-lg-2 col-form-label">Email</label>
+
+                                <div class="col-lg-10"><input type="email" name="email" placeholder="Organizer Email" class="form-control" required> 
+                                </div>
+                            </div>
+
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-5">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Date/Time form</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="form-group" id="data_5">
+                                <label class="font-normal">Range select</label>
+                                <div class="input-daterange input-group" id="datepicker">
+                                    <input type="text" class="form-control-sm form-control" name="start" placeholder="01/01/2020" autocomplete="off"  required/>
+                                    <span class="input-group-addon">to</span>
+                                    <input type="text" class="form-control-sm form-control" name="end" placeholder="12/30/2021" autocomplete="off" required />
+                                </div>
+                            </div>
+                            <h3>
+                                ClockPicker
+                            </h3>
+                            <div class="input-group clockpicker" data-autoclose="true">
+                                <input type="text" class="form-control" name="time" value="09:30" />
+                                <span class="input-group-addon">
+                                    <span class="fa fa-clock-o"></span>
+                                </span>
+                            </div>
+
+                        </div>
+
+                        <div class="ibox-content">
+                                
+                        <select class="form-control"></select>
+
+                    </div> 
+
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+ 
+                            <div class="file-upload">
+                                <div class="custom-file">
+                                    <input name="logo" id="logo" type="file" class="custom-file-input" required>
+                                    <label for="logo" class="custom-file-label">Upload Your Logo ... Recommended Size : 256 x 256. </label>
+                                </div> 
+                            
+                                <div class="image-upload-wrap">
+                                  <input class="file-upload-input"  name="file" type='file' onchange="readURL(this);" accept="image/*" required />
+                                  <div class="drag-text">
+                                    <h3 class="font-weight-bold">Upload banner Image <br> Recommended Size : 1006 x 836.</h3>
+                                    
+                                  </div>
+                                </div>
+                                <div class="file-upload-content">
+                                  <img class="file-upload-image" src="#" alt="your image" />
+                                  <div class="image-title-wrap">
+                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                  </div>
+                                </div>
+                              </div>
+
+                   
+                </div>
+                <div class="col-lg-4">
+                    <div class="ibox ">
+                        <div class="ibox-title back-change">
+                            <h5 >Primary Color</small></h5>
+                          
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                                </div>
+                            
+                        </div> 
+                        <div class="ibox-content">
+                       <div class="text-center">
+                        <input name ="primarycolor" type="text" id="demo_apidemo"  class="form-control demo1" value="#5367ce" class="backgroundcolor" />
+
+                         </div>
+                           
+                    </div>
+                </div>
+
+                <div class="ibox ">
+                    <div class="ibox-title back-change">
+                        <h5 >Secondary Color</small></h5>
+                      
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            </div>
+                        
+                    </div> 
+                    <div class="ibox-content">
+                   <div class="text-center">
+                    <input name ="secondarycolor" type="text" id="demo_apidemo"  class="form-control demo1" value="#5367ce" class="backgroundcolor" />
+
+                     </div>
+                       
+                </div>
+            </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Social Media Links</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                <div class="ibox-content">
+                         <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group m-b"><span class="input-group-prepend">
+                                    <button type="button" class="btn btn-facebook">Facebook</button> </span> <input name="facebooklink" type="text" class="form-control">
+                                </div>
+                                
+                            </div>
+
+                            
+                    <div class="col-sm-6">
+
+                                <div class="input-group"><input type="text" name="twitterlink" class="form-control"> <span class="input-group-append"> <button type="button" class="btn btn-twitter">Twitter
+                                </button> </span></div>
+                            </div>
+                    </div>
+
+                        <div class="hr-line-dashed"></div>
+
+                        <div class="row">
+                            <div class="col-sm-6">
+
+                                <div class="input-group m-b"><span class="input-group-prepend">
+                                    <button type="button" class="btn btn-google">Instagram</button> </span> <input name="instagramlink" type="text" class="form-control">
+                                </div>
+                            </div>
+
+                            
+                            <div class="col-sm-6">
+
+                                <div class="input-group"><input name="linkedinlink" type="text" class="form-control"> <span class="input-group-append"> <button type="button" class="btn btn-linkedin">LinkedIn
+                                </button> </span></div>
+                            </div>
+                        </div>
+
+
+                </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <h5>Campaign Description</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                                <ul class="dropdown-menu dropdown-user">
+                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                    </li>
+                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                    </li>
+                                </ul>
+                                <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content no-padding">
+                            
+            <textarea class="summernote" id="summernote" name="editordata" required="required" data-msg="Please write something :)" ></textarea>
+                              
+                            </div>
+                
+
+                        </div>
+                     
+                    </div>
+                </div>
+
+
+
+                <div class="row justify-content-center">
+                    <div class="col-lg-4">
+                        <div class="">
+                            <div class="i-checks "><div ><img style="border:3px solid white" class="img-fluid" src="/images/Vertical.ico" alt=""></div><label class="mt-3"> <input type="radio" value="Vertical" name="template"> <i></i> <strong>Vertical</strong> </label></div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                   
+                        <div class="">
+                     <div class="i-checks  "> <div ><img  class="img-fluid" src="/images/horizontal.ico" alt=""></div> <label class="mt-4"> <input type="radio" checked="" value="Horizontal" name="template"> <i></i> <strong>Horizontal</strong>   </label></div>
+
+                        </div>
+
+                </div>
+
+            </div>
+
+<!--                 
+        <div class="row justify-content-center">
+                <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title back-change">
+                        <h5 >Template Type</small></h5>
+                      
+                        
+                        
+                    </div> 
+                    <div class="ibox-content">
+                   <div class=" text-center">
+                    <div class="row">
+                        
+                        <div class="i-checks "><div ><img  src="/images/pngico.ico" alt=""></div><label> <input type="radio" value="Vertical" name="template"> <i></i> <strong>Vertical</strong> </label></div>
+                        <div class="i-checks ml-5  "> <div ><img  src="/images/pngico.ico" alt=""></div> <label> <input type="radio" checked="" value="Horizontal" name="template"> <i></i> <strong>Horizontal</strong>   </label></div>
+
+                    </div>
+                     </div>
+                       
+                </div>
+            </div>
+
+
+        </div>
+    </div>  -->
+
+
+
+            </div>
+            <div style="margin-bottom:50px;">
+
+           <button  style="font-size: 15px; text-align: center; margin: auto;" type="submit" class="d-flex text-center btn-rounded btn btn-primary">Create Campaign</button> 
+       
+            </div>
+    
+
+        </form>
+
+       
+
+                
+        <%-include('../partials/admin_footer');-%>
+

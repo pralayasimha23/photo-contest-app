@@ -1,0 +1,288 @@
+.mandatory {
+    color: red;
+    font-size: 11px
+}
+
+.validationfail {
+    box-shadow: 0 0 0 2px crimson
+}
+
+.registervalidationfail {
+    box-shadow: 0 0 0 2px crimson
+}
+
+.registercheckfail {
+    border-color: rgba(255, 0, 0, .75) !important
+}
+
+.pswd_info ul li {
+    list-style-type: none
+}
+
+.pswd_info {
+    position: absolute;
+    left: 12px;
+    width: 305px;
+    padding: 10px;
+    background: #fefefe;
+    font-size: .875em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    border: 1px solid #b7abab;
+    z-index: 1003;
+    text-align: left;
+    display: none
+}
+
+.pswd_info-right {
+    display: none;
+    position: absolute;
+    left: 294px;
+    top: 2px;
+    width: 256px;
+    padding: 10px;
+    background: #fefefe;
+    font-size: .875em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    border: 1px solid #b7abab;
+    z-index: 1003;
+    text-align: left
+}
+
+.pswd_info-right::before {
+    content: "▲";
+    color: #fff;
+    display: block;
+    font-size: 19px;
+    line-height: 14px;
+    position: absolute;
+    text-shadow: 0 -1px 1px #d0d0d0;
+    top: -14px
+}
+
+.pswd_info-left {
+    display: none;
+    position: absolute;
+    left: -252px;
+    top: 0;
+    width: 256px;
+    padding: 10px;
+    background: #fefefe;
+    font-size: .875em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    border: 1px solid #b7abab;
+    z-index: 1003;
+    text-align: left
+}
+
+.pil {
+    left: -20px;
+    top: 60px
+}
+
+.pil:before {
+    content: "" !important;
+    font-family: FontAwesome;
+    top: -10px !important;
+    left: 50% !important
+}
+
+.pswd_info-left::before {
+    content: "▶";
+    position: absolute;
+    top: 24px;
+    left: 100%;
+    font-size: 19px;
+    line-height: 14px;
+    color: #ddd;
+    text-shadow: none;
+    display: block
+}
+
+.pswd_info h5 {
+    margin: 0 0 10px 0;
+    padding: 0;
+    font-weight: normal
+}
+
+.pswd_info::before {
+    content: "▲";
+    position: absolute;
+    top: -12px;
+    left: 45%;
+    font-size: 14px;
+    line-height: 14px;
+    color: #ddd;
+    text-shadow: none;
+    display: block
+}
+
+.invalid {
+    background: url(/Assets/Images/cross.png) no-repeat 0 50%;
+    padding-left: 30px;
+    line-height: 30px;
+    color: #ec3f41;
+    background-size: 20px 20px;
+    font-size: 12px;
+    list-style: none;
+    display: block !important;
+    width: 100% !important
+}
+
+#employerpswd_info>ul,
+#candidatepswd_info>ul {
+    padding: 0
+}
+
+#employerpswd_info>h5,
+#candidatepswd_info>h5 {
+    font-size: 14px;
+    font-weight: bold
+}
+
+.valid {
+    background: url(/Assets/Images/tick.png) no-repeat 0 50%;
+    padding-left: 30px;
+    line-height: 30px;
+    color: #3a7d34;
+    background-size: 20px 20px;
+    font-size: 12px;
+    list-style: none;
+    display: block !important;
+    width: 100% !important
+}
+
+.pswd_info {
+    display: none
+}
+
+.linkdisabled {
+    color: #bfbfbf !important
+}
+
+input[type=checkbox].css-checkbox {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0
+}
+
+input[type=checkbox].css-checkbox+label.css-label {
+    padding-left: 25px;
+    height: 20px;
+    display: inline-block;
+    line-height: 20px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    font-size: 12px;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+input[type=checkbox].css-checkbox:checked+label.css-label {
+    background-position: 0 -20px
+}
+
+label.css-label {
+    background-image: url(../Images/checkbox.png);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none
+}
+
+.pswd_info-sharelink {
+    display: none
+}
+
+.pswd_info-sharelink {
+    position: absolute;
+    left: 0;
+    width: 390px;
+    padding: 10px;
+    background: #fefefe;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    border: 1px solid #b7abab;
+    z-index: 1003;
+    text-align: left;
+    display: none
+}
+
+.pswd_info-sharelink ::before {
+    content: "▲";
+    position: absolute;
+    top: -13px;
+    left: 9%;
+    font-size: 14px;
+    line-height: 14px;
+    color: #ddd;
+    text-shadow: none;
+    display: block
+}
+
+.pswd_info-checklist {
+    display: none
+}
+
+.pswd_info-checklist {
+    position: absolute;
+    left: 12px;
+    width: 400px;
+    padding: 10px;
+    background: #fefefe;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px #ccc;
+    border: 1px solid #b7abab;
+    z-index: 1003;
+    text-align: left;
+    display: none
+}
+
+.pswd_info-checklist ::before {
+    content: "▲";
+    position: absolute;
+    top: -13px;
+    left: 20%;
+    font-size: 14px;
+    line-height: 14px;
+    color: #ddd;
+    text-shadow: none;
+    display: block
+}
+
+.well {
+    min-height: 330px;
+    padding: 45px;
+    width: 336px;
+    margin-top: 100px;
+    border: 1px solid #e3e3e3;
+    border-radius: 2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .05)
+}
+
+.label {
+    color: #000
+}
+
+.newbt {
+    background-color: #10cfbd;
+    border-color: #10cfbd
+}
+
+.focbtn focus {
+    background-color: #10cfbd
+}

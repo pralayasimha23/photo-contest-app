@@ -1,0 +1,313 @@
+<%- include('partials/gallery_header') %>
+
+<style>
+body{
+    background-color:#f3f3f4 !important;
+}
+.home-gellary-area .single-gellary{
+    background:white;
+}
+
+
+</style>
+
+<!-- Inner Page Header serction end here -->
+
+<!-- Home Page Gellary Start Here -->
+<div class="home-gellary-area pt-100 pb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="section-title">
+                    <h3><%=campaign.Campname  %> Contest <span> Gallery</span></h3>
+                    <div class="view-more">
+                        <a href="/photoapp/<%= slug %> ">Particiapte Now</a>
+                    </div>
+                    <div>
+                        <p class="p-5">Ends on <%=campaign.End %></p>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+            <%photolist.forEach(function(photo){%>
+
+
+
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-30">
+                <div class="single-gellary">
+                    <div class="image">
+                        <img src="/PhotoContestUploads/<%=photo.Photo%>" alt="">
+
+                        <div class="overley">
+                            <ul>
+                                <li><a href="<%=photo.Description.slice(0,60) + '....'%>" data-lightbox="example-set"
+                                        data-title="<%=photo.Description.slice(0,60) + '....'%>"><i class="fa fa-eye"></i></a></li>
+                                <li><a href="/PhotoContestUploads/<%=photo.Photo%>" data-lightbox="example-set"
+                                        data-title="<%=photo.Description.slice(0,60) + '....'%>"><i class="fa fa-search"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="gellary-informations">
+                        <ul id="<%=photo.id %>">
+
+
+
+
+                            <li>
+
+                                <h3><a href="/PhotoContestUploads/<%=photo.Photo%>" data-lightbox="example-set"
+                                        data-title="<%=photo.Description.slice(0,25) + '....'%>"><%=photo.Description.slice(0,25) + '....'%> <span>by
+                                            <%=photo.Name%> </span></a>
+
+                                </h3>
+                            </li>
+
+
+
+
+
+
+                            <%if (!user){%>
+
+
+
+                            <li >
+
+
+                                <button type="button" id="<%=photo.id %>" class="btn btn-info" data-toggle="modal"
+                                    data-target="#myModal">
+                                    Like
+                                </button>
+
+
+                                <span id="likes-count"><%= photo.likes_count %></span>
+                                <!-- 
+                                <button class="btn btn-success btn-sm mr-1" data-toggle="modal"
+                                    data-target="#modalFormCenter" id="<%=photo.id %>">
+                                    Like</i></button> -->
+
+
+
+
+
+                            </li>
+
+
+
+                            <%}else{%>
+
+
+
+                            <% if (photo.likedBy.includes(user._id) ){ %>
+
+
+
+
+
+                            <li>
+
+                                <button class="btn btn-success btn-sm mr-1 mark-complete-btn " id="<%=photo.id %>"
+                                    disabled>Liked </button>
+
+                                <span id="likes-count"><%= photo.likes_count %> </span>
+
+
+
+                            </li>
+
+
+
+                            <%  } else { %>
+
+                            <!-- <li class="center"> Like</li> -->
+
+
+                            <li>
+
+
+                                <button class="btn btn-success btn-sm mr-1 mark-complete-btn " id="<%=photo.id %>">
+                                    Like </button>
+                                <span id="likes-count"><%= photo.likes_count %></span>
+
+                                <!-- <button class="btn btn-info btn-sm mr-1 edit-btn " id="<%=photo.id %>"> <i
+                                                class="fas fa-edit"></i></button> -->
+
+
+                                <!-- <form  id ="winnerselect" method="post">
+                                                <input type="hidden" name="winnerphotoid" value="" /> -->
+                                <!-- <input type="hidden" name="winnerphotoid" value=">" /> -->
+
+                                <!-- <input  class="btn btn-primary btn-xs" type="submit" value="Select as winner" > -->
+
+                                <!-- </form> -->
+                                <% } %>
+                            </li>
+
+
+                            <% }%>
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <%})%>
+
+
+
+            <% if (pages > 0) { %>
+            <ul class=" pagination justify-content-center">
+                <% if (current == 1) { %>
+                <li class="disabled"><a>First</a></li>
+                <% } else { %>
+                <li><a href="/photoapp/<%=slug%>/gallery/1">First</a></li>
+                <% } %>
+                <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+                <% if (i !== 1) { %>
+                <li class="disabled"><a>...</a></li>
+                <% } %>
+                <% for (; i <= (Number(current) + 4) && i <= pages; i++) { %>
+                <% if (i == current) { %>
+                <li class="active"><a><%= i %></a></li>
+                <% } else { %>
+                <li><a href="/photoapp/<%=slug%>/gallery/<%= i %>"><%= i %></a></li>
+                <% } %>
+                <% if (i == Number(current) + 4 && i < pages) { %>
+                <li class="disabled"><a>...</a></li>
+                <% } %>
+                <% } %>
+                <% if (current == pages) { %>
+                <li class="disabled"><a>Last</a></li>
+                <% } else { %>
+                <li><a href="/photoapp/<%=slug%>/gallery/<%= pages %>">Last</a></li>
+                <% } %>
+            </ul>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div class="modal bd-example-modal-sm fade" id="modalFormCenter" role="dialog"> -->
+<!-- <div class="modal-dialog">
+        <div class="modal-content"> -->
+<!-- Modal Header -->
+<!-- <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button> -->
+<!-- <h4 class="modal-title" id="myModalLabel">Contact Form</h4> -->
+
+
+<!-- </div> -->
+
+<!-- Modal Body -->
+<!-- <form role="form">
+                <div class="modal-body"> -->
+<!-- <p class="statusMsg"></p>
+                    <p class="VeriCode"></p>
+                     -->
+<!-- <div class="form-group">
+                            <label for="inputName">Name</label>
+                            <input type="text" class="form-control" id="inputName" placeholder="Enter your name"/>
+                        </div> -->
+
+<!-- <div>
+                        <a class="btn btn-block btn-google btn-social btn-block " href="/auth/google"><i
+                                class="fab fa-google-plus-g fa-xs"></i>Sign in with Google to vote</a>
+
+                    </div> -->
+
+<!-- <p class="font-weight-bold mt-75 text-center">(or)</p>
+
+                    <div class="form-group">
+                        <label for="inputEmail">Enter Your Email To Vote</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Enter your email" />
+                    </div>
+
+             
+
+            
+                    <p class="statusMsg"></p>
+                    <p class="VeriCode"></p> -->
+<!-- </div> -->
+
+<!-- Modal Footer -->
+<!-- <div class="modal-footer">
+                    <button type="button" id="closeBtn" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-info submitBtn" onclick="submitContactForm()">SUBMIT</button>
+
+                </div>
+
+            </form> -->
+
+<div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <div class="modal-dialog">
+        <div class="modal-content animated fadeIn">
+
+
+            <!-- <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <i class="fa fa-laptop modal-icon"></i>
+                            <h4 class="modal-title">Modal title</h4>
+                            <small class="font-bold">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small>
+                        </div> -->
+            <div class="modal-body">
+
+                <div>
+                    <img style="width:100%;height:250px; "
+                        src="https://media.giphy.com/media/U9MXYXKnLAqQIRROY2/giphy.gif" alt="">
+
+                </div>
+
+                <div>
+                    <a class="btn  btn-block btn-google btn-social btn-block " href="/auth/google"><i
+                            class="fab fa-google-plus-g fa-xs"></i>Sign in with Google to vote</a>
+
+                </div>
+                <!-- <a href="" class="btn btn-block btn-social btn-google">
+                                <span class="fa fa-google"></span> Sign in with Google
+                            </a>
+                            <div class="form-group"><label>Sample Input</label> <input type="email" placeholder="Enter your email" class="form-control"></div>
+                            <div class="form-group"><label>Sample Input</label> <input type="password" placeholder="Enter your password" class="form-control"></div> -->
+            </div>
+            <!-- <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                          
+                        </div> -->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+</div>
+</div>
+
+
+
+
+
+<%- include('partials/gallery_footer') %>

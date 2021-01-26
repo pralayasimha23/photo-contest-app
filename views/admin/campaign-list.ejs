@@ -1,0 +1,378 @@
+<%-include('../partials/admin_header');-%>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-8">
+        <h2>Product edit</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>E-commerce</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Product edit</strong>
+            </li>
+        </ol>
+    </div>
+
+    <div class="col-lg-4 mt-5">
+        <% if(messages.success) { %>
+        <div class="alert alert-success alert-dismissible fade show">
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% messages.success.forEach(function(success){ %>
+            <div><%= success.msg %> <a href="/photoapp/<%= Campname.replace(/\s/g, '-') %>"> View Your Campaign</a></div>
+            <% }); %>
+        </div>
+
+        <% } %>
+
+        <% if(messages.errors) { %>
+        <div class="alert alert-danger alert-dismissible fade show">
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% messages.errors.forEach(function(error){ %>
+            <div><%= error.msg %> View Campaign</div>
+            <% }); %>
+        </div>
+        <% } %>
+
+        <% if(messages.info) { %>
+        <div class="alert alert-info alert-dismissible fade show">
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% messages.info.forEach(function(info){ %>
+            <div><%= info.msg %></div>
+            <% }); %>
+        </div>
+        <% } %>
+    </div>
+
+
+
+</div>
+
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+                    <li><a class="nav-link active" data-toggle="tab" href="#tab-1"> Photo Campain</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-2">Email Campaign</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-3">Social Media Campaign</a></li>
+                    <li><a class="nav-link" data-toggle="tab" href="#tab-4">Social Media Contest</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div id="tab-1" class="tab-pane active">
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-stripped">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>
+                                                Campaign Image
+                                            </th>
+                                            <th>
+                                                Campaign URL
+                                            </th>
+                                            <th>
+                                                Campaign Name
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+
+
+
+                                        <% camplist.forEach(function(camp){%>
+                                        <tr data-id=<%=camp.id%> id='myAnchor' class="text-center">
+                                            <td>
+                                                <img class="" src="campaign/<%=camp.Banner%>"
+                                                    style="width:100px; height:50px;">
+                                            </td>
+                                            <td>
+                                                <a href="photoapp/<%=camp.slug%>"> <button type="button"
+                                                        class="btn btn-default">Campaign Link</button></a>
+
+                                            </td>
+                                            <td>
+
+
+                                                <strong> <%-camp.Title%> </strong>
+                                            </td>
+
+
+
+                                            <td>
+
+                                                <!-- <div class="row"> -->
+                                                <!--                                                             
+                                                    <div id="myAnchor" data-id=""  class="col-sm-2"> -->
+
+
+                                                <form action="/campaign/<%=camp.id%>" method="post">
+
+                                                    <a  href="photoapp/<%=camp.slug%>/gallery/1" > <button type="button"
+                                                        class=" btn btn-success"  data-style="expand-right">Gallery</button></a>
+                                                    <!-- <button href="photoapp/<%=camp.slug%>/analytics" class="ladda-button btn btn-danger" data-style="expand-right"><span class="ladda-label">Submit</span><span class="ladda-spinner"></span></button> -->
+                                                    <a href="photoapp/<%=camp.slug%>/analytics"> <button type="button"
+                                                        class=" btn btn-primary"  data-style="expand-right">Analytics</button></a>
+
+                                                    <button data-id=<%=camp.id%> id='myAnchor'
+                                                        class="btn btn-outline btn-danger delete-camp ">Delete </button>
+
+
+
+                                                </form>
+                                                <!-- <form action="//edit" method='get'>
+                                                       
+                                                         
+                                                        <button class="btn btn-outline btn-info  "><i class="fa fa-edit"></i> </button>
+                                                    </form> -->
+                                                <!-- </div> -->
+
+
+
+                                            </td>
+
+                                        </tr>
+
+
+                                        <%})%>
+
+
+
+                                    </tbody>
+
+                                </table>
+                            </div>
+
+                        </div>
+
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox ">
+                                        <div class="ibox-title">
+                                            <h5>Basic Data Tables example with responsive plugin</h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-user">
+                                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                                    </li>
+                                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                                    </li>
+                                                </ul>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+
+                                            <div class="table-responsive">
+                                                <table
+                                                    class="table table-striped table-bordered table-hover dataTables-example">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Rendering engine</th>
+                                                            <th>Browser</th>
+                                                            <th>Platform(s)</th>
+                                                            <th>Engine version</th>
+                                                            <th>CSS grade</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="gradeX">
+                                                            <td>Trident</td>
+                                                            <td>Internet Explorer 4.0
+                                                            </td>
+                                                            <td>Win 95+</td>
+                                                            <td class="center">4</td>
+                                                            <td class="center">X</td>
+                                                        </tr>
+                                                        <tr class="gradeC">
+                                                            <td>Trident</td>
+                                                            <td>Internet Explorer 5.0
+                                                            </td>
+                                                            <td>Win 95+</td>
+                                                            <td class="center">5</td>
+                                                            <td class="center">C</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Rendering engine</th>
+                                                            <th>Browser</th>
+                                                            <th>Platform(s)</th>
+                                                            <th>Engine version</th>
+                                                            <th>CSS grade</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div id="tab-2" class="tab-pane">
+
+                        <div class="panel-body">
+
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-stripped">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Image preview
+                                            </th>
+                                            <th>
+                                                Image url
+                                            </th>
+                                            <th>
+                                                Sort order
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="img/gallery/2s.jpg">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" disabled
+                                                    value="http://mydomain.com/images/image1.png">
+                                            </td>
+                                            <td>
+                                                <input type="text" class="form-control" value="1">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-white"><i class="fa fa-trash"></i> </button>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                        <div class="wrapper wrapper-content animated fadeInRight">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="ibox ">
+                                        <div class="ibox-title">
+                                            <h5>Basic Data Tables example with responsive plugin</h5>
+                                            <div class="ibox-tools">
+                                                <a class="collapse-link">
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </a>
+                                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-user">
+                                                    <li><a href="#" class="dropdown-item">Config option 1</a>
+                                                    </li>
+                                                    <li><a href="#" class="dropdown-item">Config option 2</a>
+                                                    </li>
+                                                </ul>
+                                                <a class="close-link">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="ibox-content">
+
+                                            <div class="table-responsive">
+                                                <table
+                                                    class="table table-striped table-bordered table-hover dataTables-example">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>Rendering engine</th>
+                                                            <th>Browser</th>
+                                                            <th>Platform(s)</th>
+                                                            <th>Engine version</th>
+                                                            <th>CSS grade</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="gradeX">
+                                                            <td>Trident</td>
+                                                            <td>Internet Explorer 4.0
+                                                            </td>
+                                                            <td>Win 95+</td>
+                                                            <td class="center">4</td>
+                                                            <td class="center">X</td>
+                                                        </tr>
+                                                        <tr class="gradeC">
+                                                            <td>Trident</td>
+                                                            <td>Internet Explorer 5.0
+                                                            </td>
+                                                            <td>Win 95+</td>
+                                                            <td class="center">5</td>
+                                                            <td class="center">C</td>
+                                                        </tr>
+
+                                                    </tbody>
+                                                    <tfoot>
+                                                        <tr>
+                                                            <th>Rendering engine</th>
+                                                            <th>Browser</th>
+                                                            <th>Platform(s)</th>
+                                                            <th>Engine version</th>
+                                                            <th>CSS grade</th>
+                                                        </tr>
+                                                    </tfoot>
+                                                </table>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="footer">
+    <div class="float-right">
+        10GB of <strong>250GB</strong> Free.
+    </div>
+    <div>
+        <strong>Copyright</strong> Example Company &copy; 2014-2018
+    </div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+<%-include('../partials/admin_footer');-%>

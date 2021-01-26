@@ -1,0 +1,118 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Forgot password</title>
+
+    <link href="/inspia/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/inspia/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/inspia/css/animate.css" rel="stylesheet">
+    <link href="/inspia/css/style.css" rel="stylesheet">
+
+
+<body class="gray-bg">
+
+    <div class="passwordBox animated fadeInDown">
+        <% if(messages.success) { %>
+            <div class="alert alert-success alert-dismissible fade show">
+               
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <% messages.success.forEach(function(success){ %>
+                <div><%= success.msg %></div>
+             <% }); %>
+            </div>
+            <% } %>
+            
+            <% if(messages.errors) { %>
+            <div class="alert alert-danger alert-dismissible fade show">
+               
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <% messages.errors.forEach(function(error){ %>
+                <div><%= error.msg %></div>
+                <% }); %>
+            </div>
+            <% } %>
+            
+            <% if(messages.info) { %>
+            <div class="alert alert-info alert-dismissible fade show">
+                
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                  <% messages.info.forEach(function(info){ %>
+                  <div><%= info.msg %></div>
+                   <% }); %>
+            </div>
+            <% } %>
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="ibox-content">
+
+                    <h2 class="font-bold">Forgot password</h2>
+
+                    <p>
+                        Enter your email address and your password will be reset and emailed to you.
+                    </p>
+
+                    <div class="row">
+
+                        <div class="col-lg-12">
+                            <form class="m-t" method="POST" role="form" >
+                                <input type="hidden" name="_csrf">
+                                <div class="form-group">
+                                    <input type="email" class="form-control"  name="email" id="email" placeholder="Email" autofocus autocomplete="email" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary block full-width m-b">Reset new password</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-md-6">
+                Copyright Example Company
+            </div>
+            <div class="col-md-6 text-right">
+               <small>© 2014-2015</small>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

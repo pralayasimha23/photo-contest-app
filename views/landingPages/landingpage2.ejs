@@ -1,0 +1,244 @@
+<%- include('../partials/gallery_header') %>
+
+
+<style>
+
+
+
+</style>
+<body style="background-color: #f3f3f4;" class="photocontest-list2">
+    <!--Preview area start here-->
+   
+    <!--End preview here -->
+    <!--Header area start here-->
+    <header>
+        <div class="header-top-area hidden-sm">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="header-top-left">
+                            <ul>
+                                <!-- <li><i class="fa fa-phone"></i><a href="tel:+985-2356-14566">+985-2356-14566</a></li> -->
+                                <li><i class="fa fa-envelope-o"></i><a href="mailto:yourmail@gmail.com">yourmail@gmail.com</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="right-side-tool text-right">
+                            <div class="social-media-area">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                  
+                      
+                                </ul>
+                            </div>
+                            <!-- <div class="header-top-right">
+                                <ul>
+                                    <li><i class="fa fa-users"></i><a href="registration.html">Login/Registration</a></li>
+                                </ul>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="background-color: #f3f3f4;" class="header-middle-area" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-12 center-block d-block mx-auto">
+                        <div class="logo-area ">
+                            <a href="index.html"><img class="rounded-circle" style="height: 100px;" src="/logos/<%=Logo%>" alt="logo"></a>
+                        </div>
+                    </div>
+                  
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Slide Menu Section Start Here -->
+     
+    </header>
+    <!--Header area end here-->
+
+
+    <!-- About Photo Contests Start Here -->
+    <div class="home-about-photo-contest-area pt-100 pb-100">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-12 mb-50">
+                    <div class="single-section text-center">
+                        <div class="section-img ">
+                            <img class="img-fluid"  style="height:600px; width: 1200px; margin:0 auto;" src="/campaign/<%=Banner%>" alt="single Images" />
+                        </div>
+                        <h3 class="headding-title"><%=Title%></h3>
+                        <ul id="meta-text">
+                          
+                            <li class="date"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Ends on: <%=End.toLocaleDateString('en-GB', {  
+                                day : 'numeric',
+                                month : 'short',
+                                year : 'numeric'
+                            });%></li>
+                        </ul>
+                      
+                        <!-- <li class="date" id="findate"><i class="fa fa-calendar-check-o"></i></li> -->
+                        
+                        <div class="countdown-section">
+                            <div class="row">
+                                <div class="offset-md-3 offset-sm-3 col-sm-6">
+                                    <div class="CountDownTimer" data-date="<%=End.toISOString().slice(0,10); %> 00:00:00">      </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="des"><%-Description%></p>
+
+                           <!-- Multistep Form Start Here -->
+                  <div style="overflow:visible" class="multistep-form pt-100 pb-100">
+<<<<<<< HEAD
+                
+=======
+                    <div class="container">
+>>>>>>> d826c5c39d541542577c9203c7fd7edcf99b6b2c
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <!-- multistep form -->
+                                <form class="regform" id="fileUploadForm" >
+                                    <!-- progressbar -->
+                                    <ul id="progressbar">
+                                        <li class="active">Your Personal Informations</li>
+                                        <li>Upload Photo Informations</li>
+                                        <li>Preview Details Again</li>
+                                        <li>Terms and Conditions</li>
+                                        <li>Status </li>
+                                    </ul>
+                                    <!-- fieldsets -->
+                                    <fieldset id="first">
+                                        <h2 class="title">Your Personal Informations</h2>
+                                        <input type="text" class="text_field" id="name" name="name" placeholder="Your Name" required minlength="4" />
+                                        <br/>
+                                        <input type="number" class="text_field" name="phone" placeholder="Your Phone Number" required />
+                                        <br/>
+                                        <input type="email" class="text_field" id ="email" name="email" placeholder="Email" required/>
+                                       
+                                        <br/>
+                                        <input type="button" name="next" class="next_btn margin-0" value="Next >" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <h2 class="title">Upload Photo Informations</h2>
+                                   
+                                        <input type="file"  name="file"  class="text_field" onchange="previewFile();"  required/>
+                                        <br/>
+                                        <textarea class="description"  name="description" cols="30" rows="10" placeholder="Photo Upload"></textarea>
+                                        <input type="button" name="previous" class="pre_btn" value="< Back" />
+                                        <input type="button" name="next" class="next_btn" value="Next >" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <h2 class="title">Preview Details Again</h2>
+                                        <ul id="preview">
+                                            <li><img style="width: 400px; height:200px;" id="previewImg" src="images/preview.jpg" alt=""></li>
+                                            <li><span>Name :</span> John Deo</li>
+                                            <li><span>E-mail :</span> johndeo@gmail</li>
+                                        
+                                            <li><span>Photo Status :</span> Publish</li>
+                                        </ul>
+                                        <input type="button" name="previous" class="pre_btn" value="< Back" />
+                                        <input  type="button" name="next" class="next_btn" value="Next >" />
+                                    </fieldset>
+                                    <fieldset>
+                                        <h2 class="title">Terms and Conditions</h2>
+                                        <div class="term-and-conditions">
+                                            <input type="checkbox"> I have read and accept Official contest rules
+                                        </div>
+                                <div class=" offset-md-4 col-md-8 p-1 mb-2">
+                                       <div class=" g-recaptcha" data-sitekey= <%=sitekey%>></div>
+                                    </div>
+                                        
+                                        <input type="button" name="previous" class="pre_btn" value="< Back" />
+                                        <input type="submit"  name="next" class="next_btn" value="Submit >" />
+            
+            
+                                    </fieldset>
+                                    <fieldset>
+                                        <h2 class="status"></h2>
+                                        <p id='successmsg'></p>
+                                        <div class="link-section center-block d-block mx-auto" >
+                                            <!-- <a class="icon icon-share blue-ocean share-btn primary-btn">Share the contest</a> -->
+                                            <div class="addthis_inline_share_toolbox"></div>
+                                            <a href="/photoapp/<%=slug%>" class="joni-btn primary-btn">Submit Another</a>
+                                            <a href="/photoapp/<%=slug%>/gallery/1" class="joni-btn primary-btn">View other entries</a>
+                                        </div>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        
+
+
+                    </div>
+                </div>
+                      
+                  
+
+
+  
+</div>
+</div>
+
+
+
+
+
+               
+             
+            </div>
+        </div>
+    </div>
+    <!-- About Photo Contests End Here -->
+
+
+  
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+ 
+  
+  
+
+
+    <!-- Jquery Validate -->
+ <script src="/inspia/js/plugins/validate/jquery.validate.min.js"></script> 
+
+
+
+<script>
+
+$(".inner-page-header").remove();
+
+
+function previewFile(input){
+        var file = $("input[type=file]").get(0).files[0];
+       
+        if(file){
+            var reader = new FileReader();
+ 
+            reader.onload = function(){
+                $("#previewImg").attr("src", reader.result);
+               
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+
+  
+        
+     
+ 
+</script>
+
+    <%- include('../partials/gallery_footer') %>

@@ -1,0 +1,236 @@
+<%-include('../partials/admin_header');-%>
+
+<style>
+
+.modal-dialog,
+.modal-content {
+    /* 80% of window height */
+    height: 500px;
+}
+
+
+</style>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+
+    <div class="row">
+        <!-- <div class="col-lg-3">
+                        <div class="widget style1">
+                            <div class="row"> -->
+        <!-- <div class="col-4 text-center">
+                                    <i class="fa fa-trophy fa-5x"></i>
+                                </div> -->
+        <!-- <div class="col-8 text-right">
+                                    <span> Campaign: </span>
+                                    <h3 class="font-bold"></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+        <input type="hidden" id="campname" value="<%=campaign.Campname%>">
+
+     
+
+
+        <div class="col-lg-3">
+            <div class="widget style1 navy-bg">
+                <div class="row">
+                    <div class="col-3">
+                        <i class="fa fa-sign-in  fa-5x"></i>
+                    </div>
+                    <div class="col-8 text-right">
+                        <span>Total Entries </span>
+                        <h2 id="entrycount" class="font-bold "><%= Count%></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="widget style1 lazur-bg">
+                <div class="row">
+                    <div class="col-4">
+                        <i class="fa fa-thumbs-o-up fa-5x"></i>
+                    </div>
+                    <div class="col-8 text-right">
+                        <span>Total no. of likes </span>
+                        <h2 id="totlikes" class=" font-bold"><%=Totallikes%></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="widget style1 yellow-bg">
+                <div class="row">
+                    <div class="col-4">
+                        <i class="fa fa-users fa-5x"></i>
+                    </div>
+                    <div class="col-8 text-right">
+                        <span> No.of Participants </span>
+                        <h2 id="totparticipates" class="font-bold"><%= Count%></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+     
+        <div class="col-lg-3">
+            <div class="widget style1 navy-bg">
+                <div class="row">
+                    <!-- <div class="col-3">
+                        <i class="fa fa-cloud fa-5x"></i>
+                    </div> -->
+                    <div class="col-4 text-right">
+                        <span> Ends On: </span>
+                        <h2 class="font-bold"><%=campaign.End.getFullYear() + '/' +campaign.End.getMonth() + '/'+ campaign.End.getDate() %></h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+
+<h1 id="picid"> </h1>
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Campaign Analytics</h5>
+                   <a href="/photoapp/<%=campaign.slug%>/gallery/1"> <button class="ml-5 btn btn-light btn-sm mr-1 justify-content-center "
+                                         > View Gallery</i></button></a>
+                    <a href="/photoapp/<%=campaign.slug%>"> <button class="ml-1 btn btn-light btn-sm mr-1 justify-content-center "
+                                            > Landing page</i></button></a>                      
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#" class="dropdown-item">Config option 1</a>
+                            </li>
+                            <li><a href="#" class="dropdown-item">Config option 2</a>
+                            </li>
+                        </ul>
+                        <a class="close-link">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Author</th>
+                                    <th>No .of Likes</th>
+                                    <th>Status</th>
+                                    <th>Select The winner</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% photolist.forEach(function(photo){ %>
+
+                                <tr id="<%=photo.id %>" class="gradeX">
+                                    <td> <a href="/PhotoContestUploads/<%=photo.Photo%>" data-lightbox="example-set"
+                                            data-title="<%=photo.Description%>"><img
+                                                src="/PhotoContestUploads/<%= photo.Photo %>"
+                                                style="width:100px; height:50px;"> </a></td>
+                                    <td class="author" name="author"><%= photo.Name %>
+                                    </td>
+                                    <td class="piclikes" id="likescount"><%=photo.likes_count%></td>
+                                    <% if ( photo.done ){ %>
+                                    <td class="center"> Selected</td>
+                                    <td>
+                                        <button class="btn btn-danger btn-sm mr-1 delete-btn " id="<%=photo.id %>">
+                                            Delete</i></button>
+                                    </td>
+                                    <%  } else if (!photo.done){ %>
+                                    <td class="center"> Not Selected</td>
+                                    <td>
+                                      <button class="btn btn-success btn-sm mr-1 mark-complete-btn "
+                                            id="<%=photo.id %>"> Select as winner</i></button>
+                                       
+                                      <!-- <button class="btn btn-info btn-sm mr-1 ladda-button ladda-button-demo plagarisam-btn"
+                                      data-style="expand-right"  id="<%=photo.id %>"> Check Plagarisam</i></button>      -->
+
+                                        <button class="btn btn-danger btn-sm mr-1 delete-btn " id="<%=photo.id %>">
+                                            Delete</i></button>                           
+                                        
+                                    </td>
+                                    
+                             
+                                        <% } %>
+                                    
+                                    
+
+                                  
+
+                                </tr>
+
+                                <%})%>
+                               
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div style="height:fit-content;" class="text-center modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+
+    
+
+        <div class=" modal-header">
+            <h2 class="modal-title" id="exampleModalLongTitle">Modal title</h2>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+        
+
+       
+        <div class="modal-body">
+      <h3>Results: Visually Similar images</h3>
+      <hr id="maincontent">
+        
+            
+        <!-- <img style="width:100px; height:100px; float : left;" src="https://thumbs.dreamstime.com/z/scenery-looking-liptov-basin-demanovska-mountain-experience-simple-hiking-187132165.jpg" alt=""> 
+         <p>Title: Awesome</p> 
+         <a href="https://thumbs.dreamstime.com">https://thumbs.dreamstime.com</a> -->
+
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+<%-include('../partials/admin_footer');-%>

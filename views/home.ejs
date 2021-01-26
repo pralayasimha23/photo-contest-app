@@ -1,0 +1,248 @@
+<%- include('partials/main_header') %>
+
+<style>
+    body {
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+
+    .home-single-contest {
+        background-color: white;
+    }
+</style>
+<!-- Full Page Image Header with Vertically Centered Content -->
+<header class="masthead mt-0px">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12 text-center">
+                <h1 style="color:white;" class="font-weight-light">Advanced Photo Contest App</h1>
+                <p style="color:white;" class="lead">Find the creativity in camera</p>
+                <button type="button" class="btn btn-info">Know More</button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<section class="timeline pt-90 gray-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="navy-line"></div>
+                <h1>Features</h1>
+                <p>Advanced and Secured Photo Contest Application  </p>
+            </div>
+        </div>
+        <div class="row features-block">
+
+            <div class="col-lg-12">
+                <div id="vertical-timeline" class="vertical-container light-timeline center-orientation">
+                    
+            
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-paint-brush"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Campaign Dashboard</h2>
+                            <img class="border border-5 rounded-end" src="/homepage-images/dashboard.jpg" alt="">
+                            <p>Create photo contest campaigns and access them through advanced dashboard </p>
+                            <!-- <a href="#" class="btn btn-xs btn-primary"> More info</a> -->
+                            <span class="vertical-date"> <b>Create</b></span>
+                        </div>
+                    </div>
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-file-text"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Photo collection pages</h2>
+                            <img class="border border-5 rounded-end" src="/homepage-images/landing.jpg" alt="">
+                            <p>Create lead collection pages in either vertical or horizonatal with easily shareble content.</p>
+                            <!-- <a href="#" class="btn btn-xs btn-primary"> More info</a> -->
+                            <span class="vertical-date"> <b>Collect</b>   </span>
+                        </div>
+                    </div>
+
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa-file-image-o"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Gallery</h2>
+                            <img class="border border-5 rounded-end" src="/homepage-images/gallery.jpg" alt="">
+                            <p>Display photos in beautiful,responsive gallery with like button </p>
+                            <!-- <a href="#" class="btn btn-xs btn-primary"> More info</a> -->
+                            <span class="vertical-date"> <b>Show </b>  </span>
+                        </div>
+                    </div>
+
+                    <div class="vertical-timeline-block">
+                        <div class="vertical-timeline-icon navy-bg">
+                            <i class="fa fa fa-cogs"></i>
+                        </div>
+
+                        <div class="vertical-timeline-content">
+                            <h2>Analytics</h2>
+                            <img class="border border-5 rounded-end" src="/homepage-images/Analytics.jpg" alt="">
+                            <p>Analyse the contest entries in single dashboard with winner selection option
+                            </p>
+                            <!-- <a href="#" class="btn btn-xs btn-primary"> More info</a> -->
+                            <span class="vertical-date"> <b>Analyse</b>  </span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+
+
+
+<!-- Single Photo Contest Start Here -->
+<div class="home-single-contest gray-bg pt-90 pb-90">
+    <div class="home-single single-photo-contest-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <!-- <div class="section-title">
+                          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mihi vero, inquit, placet agi subtilius et, ut ipse dixisti, pressius.Photograhy HTML is very </p>
+                      </div>                    -->
+                    <div class="about-content">
+                        <h2>Running Contests</h2>
+                        <ul class="home-single-slide variation">
+                            <% camplist.forEach(function(camp){%>
+                            <li>
+                                <div class="item">
+                                    <div class="about-image">
+                                        <img src="/campaign/<%=camp.Banner%>" alt="">
+                                        <div class="overley">
+                                            <h4><a href="single-contest2.html">A way of feeling</a></h4>
+                                        </div>
+                                    </div>
+                                    <div class="about-text">
+                                        <h3><a href="single-contest2.html"><%=camp.Title%></a></h3>
+
+                                        <div class="countdown-section">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="CountDownTimer" data-date="<%=camp.End%>"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="/photoapp/<%=camp.slug%>">Register Now <i
+                                                class="fa fa-angle-right"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <%})%>
+                            <!-- <li>)
+                                  <div class="item">
+                                      <div class="about-image">
+                                          <img src="images/gellary/1.jpg" alt="">
+                                          <div class="overley">
+                                              <h4><a href="single-contest2.html">Meet Bird Eye View</a></h4>
+                                          </div>
+                                      </div>
+                                      <div class="about-text">
+                                          <h3><a href="single-contest2.html">New Photo Grapher Contest</a></h3>
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloremque odit, animi sapiente sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                              <div class="countdown-section">
+                      <div class="row">
+                        <div class="col-sm-12"><div class="CountDownTimer" data-date="2018-04-01 00:00:00"></div></div>
+                      </div>
+                    </div>
+                                              <a href="single-contest2.html">Register Now <i class="fa fa-angle-right"></i></a>
+                                      </div> 
+                                  </div>                                       
+                              </li>
+                              <li>
+                                  <div class="item">
+                                      <div class="about-image">
+                                          <img src="images/gellary/2.jpg" alt="">
+                                          <div class="overley">
+                                              <h4><a href="single-contest2.html">Meet Bird Eye View</a></h4>
+                                          </div>
+                                      </div>
+                                      <div class="about-text">
+                                          <h3><a href="single-contest2.html">New Photo Grapher Contest</a></h3>
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloremque odit, animi sapiente sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                                          <div class="countdown-section">
+                    <div class="row">
+                      <div class="col-sm-12"><div class="CountDownTimer" data-date="2018-04-01 00:00:00"></div></div>
+                    </div>
+                  </div>
+                                          <a href="single-contest2.html">Register Now <i class="fa fa-angle-right"></i></a>
+                                      </div> 
+                                  </div>                                   
+                              </li>
+                              <li>
+                                  <div class="item">
+                                      <div class="about-image">
+                                          <img src="images/gellary/3.jpg" alt="">
+                                          <div class="overley">
+                                              <h4><a href="single-contest2.html">Meet Bird Eye View</a></h4>
+                                          </div>
+                                      </div>
+                                      <div class="about-text">
+                                          <h3><a href="single-contest2.html">New Photo Grapher Contest</a></h3>
+                                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt doloremque odit, animi sapiente sunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>   
+                                          <div class="countdown-section">
+                    <div class="row">
+                      <div class="col-sm-12"><div class="CountDownTimer" data-date="2018-08-01 00:00:00"></div></div>
+                    </div>
+                  </div>
+                                          <a href="single-contest2.html">Register Now <i class="fa fa-angle-right"></i></a>
+                                      </div>  
+                                  </div>                                      
+                              </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 
+    <div class="container ">
+     
+      <p class="lead mt-5">Top features of clicx applications.</p>
+       
+      <hr style="color:#1ab394">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p><a class="btn btn-raised" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p><a class="btn btn-raised" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p><a class="btn btn-raised" href="#" role="button">View details »</a></p>
+        </div>
+        <div class="col-md-6">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+          <p><a class="btn btn-raised" href="#" role="button">View details »</a></p>
+        </div>
+      </div>
+    </div> -->
+<%- include('partials/main_footer') %>

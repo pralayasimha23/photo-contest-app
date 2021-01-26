@@ -1,0 +1,749 @@
+
+    <!-- Mainly scripts -->
+    <script src="/inspia/js/jquery-3.1.2.min.js"></script>
+    <script src="/inspia/js/popper.1.min.js"></script>
+    <script src="/inspia/js/bootstrap.js"></script>
+    <script src="/inspia/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="/inspia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+   
+
+
+
+    
+    
+    <!-- Date range picker -->
+    <script src="/inspia/js/plugins/daterangepicker/daterangepicker.js"></script>
+
+<!-- Date range use moment.js same as full calendar plugin -->
+<script src="/inspia/js/plugins/fullcalendar/moment.min.js"></script>
+
+
+  <!-- Clock picker -->
+  <script src="/inspia/js/plugins/clockpicker/clockpicker.js"></script>
+
+
+   <!-- DROPZONE -->
+   <script src="/inspia/js/plugins/dropzone/dropzone.js"></script>
+
+
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  
+
+
+ 
+<!-- Select2 -->
+<script src="/inspia/js/plugins/select2/select2.full.min.js"></script>
+
+
+<!-- Time Zone Selection -->
+<script src="/inspia/js/plugins/select2/select2.full.min.js"></script>
+
+
+ <!-- Color picker -->
+ <script src="/inspia/js/plugins/colorpicker/bootstrap-colorpicker.min.js"></script>
+
+
+<!-- SUMMERNOTE -->
+
+<script src="/inspia/js/plugins/summernote/summernote-bs4.js"></script>
+
+
+<script src="/inspia/js/plugins/timezone/timezones.full.js"></script>
+
+
+<script src="/inspia/js/plugins/dataTables/datatables.min.js"></script>
+<script src="/inspia/js/plugins/dataTables/dataTables.bootstrap4.min.js"></script>
+
+ <!-- Custom and plugin javascript -->
+ <script src="/inspia/js/inspinia.js"></script>
+ <script src="/inspia/js/plugins/pace/pace.min.js"></script>
+ 
+
+    <!-- Sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.1/dist/sweetalert2.all.js"></script>
+
+  <!-- FooTable -->
+  <script src="/inspia/js/plugins/footable/footable.all.min.js"></script>
+
+  <script src="/gallery_js/lightbox.min.js"></script>
+
+
+
+  <!-- Data picker -->
+  <script src="/inspia/js/plugins/datapicker/bootstrap-datepicker.js"></script>
+
+  
+
+
+      <!-- Ladda -->
+      <script src="/inspia/js/plugins/ladda/spin.min.js"></script>
+      <script src="/inspia/js/plugins/ladda/ladda.min.js"></script>
+      <script src="/inspia/js/plugins/ladda/ladda.jquery.min.js"></script>
+<!-- iCheck -->
+<script src="/inspia/js/plugins/iCheck/icheck.min.js"></script>
+      <!-- Jquery Validate -->
+      <script src="/inspia/js/plugins/validate/jquery.validate.min.js"></script>   
+     
+<!-- 
+<script src="/analyticsscript/analyticscript.js"></script> -->
+
+<script>
+
+
+         $(document).ready(function(){
+
+             $("#form").validate({
+                 rules: {
+                    campname: {
+                         required: true,
+                         minlength: 6
+                     },
+                     title: {
+                         required: true,
+                         minlength: 12
+                     },
+                     file: {
+                        required: true,
+                    
+                     },
+                     editordata: {
+                        required: true,
+                        minlength: 200
+                     },
+                     start:{
+                        required: true
+                     },
+                     end:{
+                        required: true
+                     }
+                    //  number: {
+                    //      required: true,
+                    //      number: true
+                    //  },
+                    //  min: {
+                    //      required: true,
+                    //      minlength: 6
+                    //  },
+                    //  max: {
+                    //      required: true,
+                    //      maxlength: 4
+                    //  }
+                 }
+             });
+        });
+
+        
+
+        $(function () {
+
+/* Summernote Validation */
+
+var summernoteForm = $('.form-validate-summernote');
+var summernoteElement = $('#summernote');
+
+var summernoteValidator = summernoteForm.validate({
+    errorElement: "div",
+    errorClass: 'is-invalid',
+    validClass: 'is-valid',
+    ignore: ':hidden:not(.summernote),.note-editable.card-block',
+    errorPlacement: function (error, element) {
+        // Add the `help-block` class to the error element
+        error.addClass("invalid-feedback");
+        console.log(element);
+        if (element.prop("type") === "checkbox") {
+            error.insertAfter(element.siblings("label"));
+        } else if (element.hasClass("summernote")) {
+            error.insertAfter(element.siblings(".note-editor"));
+        } else {
+            error.insertAfter(element);
+        }
+    }
+});
+
+summernoteElement.summernote({
+    height: 300,
+    callbacks: {
+        onChange: function (contents, $editable) {
+            // Note that at this point, the value of the `textarea` is not the same as the one
+            // you entered into the summernote editor, so you have to set it yourself to make
+            // the validation consistent and in sync with the value.
+            summernoteElement.val(summernoteElement.summernote('isEmpty') ? "" : contents);
+
+            // You should re-validate your element after change, because the plugin will have
+            // no way to know that the value of your `textarea` has been changed if the change
+            // was done programmatically.
+            summernoteValidator.element(summernoteElement);
+        }
+    }
+});
+
+var HelloButton = function (context) {
+var ui = $.summernote.ui;
+
+// create button
+var button = ui.button({
+  contents: '<i class="fa fa-child"/> Hello',
+  tooltip: 'hello',
+  click: function () {
+    // invoke insertText method with 'hello' on editor module.
+    context.invoke('editor.insertText', 'hello');
+  }
+});
+
+return button.render();   // return button as jquery object
+};
+
+$('#summernote').summernote({
+toolbar: [
+  ['mybutton', ['hello']]
+],
+
+buttons: {
+  hello: HelloButton
+}
+});
+
+});
+
+
+
+
+$(document).ready(function () {
+                $('.i-checks').iCheck({
+                    checkboxClass: 'icheckbox_square-green',
+                    radioClass: 'iradio_square-green',
+                });
+            });
+    
+  
+    
+    // $(document).on('click', '.mark-complete-btn', function () {
+    //     Swal.fire({
+    //         title: 'Are you sure?',
+    //         text: "You want to mark this task as complete",
+    //         type: 'success',
+    //         showCancelButton: true,
+    //         confirmButtonColor: '#3085d6',
+    //         cancelButtonColor: '#ffae42',
+    //         confirmButtonText: 'Mark as complete!'
+    //     }).then((result) => {
+    //         if (result.value) {
+
+    //             let currentTrId = this.id;
+    //             $.ajax({
+    //                 method: "POST",
+    //                 url: "/complete",
+    //                 data: { "taskId": this.id },
+    //                 success: function (result) {
+    //                     //    if(/* check if it is ok */) {
+    //                     console.log("Response :", result);
+    //                     Swal.fire(
+    //                         'Completed!',
+    //                         'Your Task has been marked as completed.',
+    //                         'success'
+    //                     ).then((completeResult) => {
+    //                         let currentElement = document.getElementById(currentTrId);
+    //                         currentElement.children[3].children[0].remove();
+    //                         // console.log("Current Element Checking : ",);
+
+    //                         currentElement.children[2].innerHTML = "Complete";
+    //                         // console.log("Child Nodes", currentElement.children);
+    //                     })
+    //                 }
+    //             })
+    //         }
+    //     });
+    // });
+
+
+    // $(document).on('click', '.edit-btn', function () {
+
+    //     let currentTrId = this.id;
+    //     $.ajax({
+    //         method: "get",
+    //         url: "/" + currentTrId,
+    //         // data: { "taskId": this.id },
+    //         success: function (result) {
+    //             Swal.fire({
+    //                 title: 'Edit ' + result.taskname,
+    //                 showCancelButton: true,
+    //                 confirmButtonColor: '#3085d6',
+    //                 cancelButtonColor: '#ffae32',
+    //                 confirmButtonText: '<i class="fas fa-check"></i> Update',
+    //                 cancelButtonText: '<i class="fas fa-window-close"></i> Cancel',
+    //                 html:
+    //                     // '<input id="editTaskName" class="swal2-input" value="' + result.taskname + '">' +
+    //                     // '<input id="editTaskDate" class="swal2-input" value="' + result.taskdate + '">' +
+    //                     '<div class="form-check form-check-inline">' +
+    //                         '<input class="form-check-input" type="radio" name="done" id="done" value="1" '+(result.done)+'checked>' +
+    //                         '<label class="form-check-label" for="done">Mark as Complete</label>' +
+    //                     '</div>' +
+    //                     '<div class="form-check form-check-inline">' +
+    //                         '<input class="form-check-input" type="radio" name="done" id="done" value="0">' +
+    //                         '<label class="form-check-label" for="done">Mark as Incomplete</label>' +
+    //                     '</div>',
+    //                 // focusConfirm: false,
+    //                 // onOpen: function() {
+    //                 //     $('#editTaskDate').datepicker({});
+    //                 // },
+    //                 // preConfirm: () => {
+    //                 //     return [
+    //                 //         console.log("Task Name : "+document.getElementById('editTaskName').value+ ", Date : " +
+    //                 //         document.getElementById('editTaskDate').value)
+    //                 //     ]
+    //                 // },
+    //             })
+    //         }
+    //     })
+    // });
+
+
+
+
+    $(document).ready(function(){
+            $('.dataTables-example').DataTable({
+                pageLength: 25,
+                responsive: true,
+                dom: '<"html5buttons"B>lTfgitp',
+                buttons: [
+                    { extend: 'copy'},
+                    {extend: 'csv'},
+                    {extend: 'excel', title: 'ExampleFile'},
+                    {extend: 'pdf', title: 'ExampleFile'},
+
+                    {extend: 'print',
+                     customize: function (win){
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                    }
+                    }
+                ]
+
+            });
+
+        });
+
+
+
+
+
+
+
+$('select').timezones();
+  
+
+$(document).ready(function() {
+
+$('#summernote').summernote({
+
+height: 200,                 
+focus: false   
+});
+});
+
+
+
+$('input[name="daterange"]').daterangepicker();
+
+$('#reportrange span').html(moment().subtract(29, 'days').format('MMMM D, YYYY') + ' - ' + moment().format('MMMM D, YYYY'));
+
+$('#reportrange').daterangepicker({
+    format: 'MM/DD/YYYY',
+    startDate: moment().subtract(29, 'days'),
+    endDate: moment(),
+    minDate: '01/01/2020',
+    maxDate: '12/30/2030',
+    dateLimit: { days: 100000 },
+    showDropdowns: true,
+    showWeekNumbers: true,
+    timePicker: false,
+    timePickerIncrement: 1,
+    timePicker12Hour: true,
+    ranges: {
+        'Today': [moment(), moment()],
+        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+    },
+    opens: 'left',
+    drops: 'down',
+    buttonClasses: ['btn', 'btn-sm'],
+    applyClass: 'btn-primary',
+    cancelClass: 'btn-default',
+    separator: ' to ',
+    locale: {
+        applyLabel: 'Submit',
+        cancelLabel: 'Cancel',
+        fromLabel: 'From',
+        toLabel: 'To',
+        customRangeLabel: 'Custom',
+        daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr','Sa'],
+        monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        firstDay: 1
+    }
+}, function(start, end, label) {
+    console.log(start.toISOString(), end.toISOString(), label);
+    $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+});
+
+
+$('#data_5 .input-daterange').datepicker({
+                keyboardNavigation: false,
+                forceParse: false,
+                autoclose: true
+            });
+
+
+ $('.clockpicker').clockpicker();
+
+
+//File Upload
+ $('.custom-file-input').on('change', function() {
+   let fileName = $(this).val().split('\\').pop();
+   $(this).next('.custom-file-label').addClass("selected").html(fileName);
+}); 
+
+
+
+$(document).ready(function() {
+
+$('.footable').footable();
+$('.footable2').footable();
+
+});
+
+
+
+//Color Class
+
+//  $('.demo1').colorpicker();
+
+// var divStyle = $('.back-change')[0].style;
+// $('#demo_apidemo').colorpicker({
+//     color: divStyle.backgroundColor
+// }).on('changeColor', function(ev) {
+//             divStyle.backgroundColor = ev.color.toHex();
+//         });
+
+
+
+ //logo upload 
+ 
+ $('.custom-file-input').on('change', function() {
+   let fileName = $(this).val().split('\\').pop();
+   $(this).next('.custom-file-label').addClass("selected").html(fileName);
+}); 
+
+//  Banner upload
+
+
+function readURL(input) {
+  if (input.files && input.files[0]) {
+
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('.image-upload-wrap').hide();
+
+      $('.file-upload-image').attr('src', e.target.result);
+      $('.file-upload-content').show();
+
+      $('.image-title').html(input.files[0].name);
+    };
+
+    reader.readAsDataURL(input.files[0]);
+
+  } else {
+    removeUpload();
+  }
+}
+
+function removeUpload() {
+  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+  $('.file-upload-content').hide();
+  $('.image-upload-wrap').show();
+}
+$('.image-upload-wrap').bind('dragover', function () {
+		$('.image-upload-wrap').addClass('image-dropping');
+	});
+	$('.image-upload-wrap').bind('dragleave', function () {
+		$('.image-upload-wrap').removeClass('image-dropping');
+});
+ 
+
+
+
+        $(document).ready(function() {
+
+$('.swalalert').click(function() {
+                swal({
+                        title: "Are you sure?",
+                        text: "Your will not be able to recover this imaginary file!",
+                        type: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "Yes, delete it!",
+                        cancelButtonText: "No, cancel plx!",
+                        closeOnConfirm: false,
+                        closeOnCancel: false
+                    },
+                    function(isConfirm) {
+                        if (isConfirm) {
+                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                        } else {
+                            swal("Cancelled", "Your imaginary file is safe :)", "error");
+                        }
+                    });
+            });
+
+
+          });
+
+
+
+
+
+$(document).on('click', '.delete-btn', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
+
+                let currentTrId = this.id;
+
+                $.ajax({
+                    method: "POST",
+                    url: "/delete",
+                    data: { "taskId": this.id },
+                    success: function (result) {
+                        //    if(/* check if it is ok */) {
+                        console.log("Response :", result);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your Task has been deleted.',
+                            'success'
+                        ).then((deleteResult) => {
+                                  
+                             // console.log($('h2').length);
+                            //     document.getElementsByClassName('entrycount123').value--;
+                        
+                            // const h2 = document.querySelector(".totallikes");
+                            // h2.textContent -= document.getElementById("likescount").textContent;
+
+                            //    console.log(response.likes_count);
+                            let currentElement = document.getElementById(currentTrId);
+                            
+
+                            currentElement.remove();
+                              
+
+                            // $("#" + currentElement).fadeOut("normal", function () {
+                            //     $(this).remove()
+
+                            
+
+                            $('#entrycount').html(parseInt($('#entrycount').html()) - 1);  
+
+                            $('#totparticipates').html(parseInt($('#totparticipates').html()) - 1); 
+
+
+
+                            
+
+                            
+                             
+
+                        //    let td_value = currentTrId.children[2].val();
+                        //    console.log(td_value);
+
+                        //    let h2_value =document.getElementsByClassName('totallikes').val();
+                        //    let end_value =parseInt(h2_value ) - parseInt( td_value);
+                        //    document.getElementsByClassName('totallikes').html((end_value));
+
+
+                        
+                        
+
+//                             let h2_value = $('.totallikes');
+
+// let td_value = $('#likescount');
+// let end_value = parseInt(h2_value.text()) - parseInt(td_value.text());
+
+// h2_value.text(end_value);
+                          
+                            // let a = $('#likescount').html;
+                            // a-(parseInt($('.totallikes').html()) )
+                                
+                            
+                           
+                                
+                           
+
+
+                            // $('#entrycount').val() -1;
+                            
+                        //  $('h2 #entrycount').val() -1;
+
+                    })
+
+                        //    location.reload();
+                        //    }
+                    }
+                })
+            }
+            else {
+                console.log(document.getElementById(this.id)[0])
+                console.log($(this).parent().parent()[0])
+                console.log(this.id)
+            }
+        });
+    });
+    $(document).on('click', '.mark-complete-btn', function () {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You want to mark this as winner",
+            type: 'success',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#ffae42',
+            confirmButtonText: 'Mark as complete!'
+        }).then((result) => {
+            if (result.value) {
+
+                let currentTrId = this.id;
+                $.ajax({
+                    method: "POST",
+                    url: "/complete",
+                    data: { "taskId": this.id },
+                    success: function (result) {
+                        //    if(/* check if it is ok */) {
+                        console.log("Response :", result);
+                        Swal.fire(
+                            'Selected!',
+                            'Photo has been selected as winning entry.',
+                            'success'
+                        ).then((completeResult) => {
+                            let currentElement = document.getElementById(currentTrId);
+                            currentElement.children[4].children[0].remove();
+                            console.log("Current Element Checking : ",);
+
+                            currentElement.children[3].innerHTML = "Selected";
+                            console.log("Child Nodes", currentElement.children);
+                        })
+                    }
+                })
+            }
+        });
+    });
+    
+    $(document).on('click', '.edit-btn', function () {
+
+        let currentTrId = this.id;
+        $.ajax({
+            method: "POST",
+            url: "/" + currentTrId,
+            // data: { "taskId": this.id },
+            success: function (result) {
+                Swal.fire({
+                    title: 'Edit ' + result.taskname,
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#ffae32',
+                    confirmButtonText: '<i class="fas fa-check"></i> Update',
+                    cancelButtonText: '<i class="fas fa-window-close"></i> Cancel',
+                    html:
+                        // '<input id="editTaskName" class="swal2-input" value="' + result.taskname + '">' +
+                        // '<input id="editTaskDate" class="swal2-input" value="' + result.taskdate + '">' +
+                        '<div class="form-check form-check-inline">' +
+                            '<input class="form-check-input" type="radio" name="done" id="done" value="1" '+(result.done)+'checked>' +
+                            '<label class="form-check-label" for="done">Mark as Complete</label>' +
+                        '</div>' +
+                        '<div class="form-check form-check-inline">' +
+                            '<input class="form-check-input" type="radio" name="done" id="done" value="0">' +
+                            '<label class="form-check-label" for="done">Mark as Incomplete</label>' +
+                        '</div>',
+                    // focusConfirm: false,
+                    // onOpen: function() {
+                    //     $('#editTaskDate').datepicker({});
+                    // },
+                    // preConfirm: () => {
+                    //     return [
+                    //         console.log("Task Name : "+document.getElementById('editTaskName').value+ ", Date : " +
+                    //         document.getElementById('editTaskDate').value)
+                    //     ]
+                    // },
+                })
+            }
+        })
+    });
+
+
+    Ladda.bind( '.ladda-button-demo',{ timeout: 2500 });
+
+    $(document).on('click', '.ladda-button-demo', function () {
+
+       
+ 
+                let currentTrId = this.id;
+                $.ajax({
+                    method: "post",
+                    url: "/rms",
+                    data: { "taskId": this.id },
+                    success: function (result) {
+                       
+          
+                            console.log(result.length - 1);
+                            let dup = result.length - 1
+                        
+                            console.dir(result);
+                           
+                            $("#exampleModalLong").modal();
+                            let currentElement = document.getElementById(currentTrId);
+
+                            
+                            $('#exampleModalLongTitle').html( '<strong>Plagarisam Score : ' + dup + '/5</strong>');
+
+   
+
+    resultsArray = [];
+    for (var i = 0; i < result.length; i++) {
+        $('#maincontent').html( '1. <br>' +
+           ' <a  target="_blank" href="'+ result[1].url +'"> '+result[1].url+' </a>   ' 
+           + '<br>' + '2. <br>' +  '   <a  target="_blank" href="'+ result[2].url +'"> '+result[2].url+' </a>   ' 
+           + '<br>' +'3. <br>' +  '   <a  target="_blank" href="'+ result[3].url +'"> '+result[3].url+' </a>  '
+           + '<br>' +'4. <br>' +  '   <a  target="_blank" href="'+ result[4].url +'"> '+result[4].url+' </a>   ' 
+           + '<br>' + '5. <br>' + '   <a  target="_blank" href="'+ result[5].url +'"> '+result[5].url+' </a>   ' 
+           )
+    }
+	
+    
+ 
+               
+                        
+                    }
+                })
+    });
+
+
+    
+
+    </script>
+
+</body>
+
+</html>
+
