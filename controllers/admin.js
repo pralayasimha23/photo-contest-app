@@ -111,16 +111,14 @@ exports.getCampList = (req, res) => {
     Campaign.find({
       userId: req.user._id
     }, (err, campaign) => {
-
       res.render('admin/campaign-list', {
         title: 'Campaigns',
-        camplist: campaign
-
-
-
+        camplist: campaign,
+       
       });
 
     });
+
   } else {
 
     res.render('noanalytics')
@@ -143,27 +141,13 @@ exports.getEntriesCollection = (req, res) => {
 
     if (campaigns.TemplateType == "Vertical" && campaigns.End > date) {
       res.render('landingPages/landingpage2', {
-        Banner: campaigns.Banner,
-        Logo: campaigns.Logo,
-        Title: campaigns.Title,
-        Primarycolor: campaigns.Primarycolor,
-        Start: campaigns.Start,
-        End: campaigns.End,
-        Description: campaigns.Description,
-        slug: campaigns.slug,
+        campaign : campaigns,
         sitekey: process.env.RECAPTCHA_SITE_KEY,
       });
     } else if (campaigns.TemplateType == "Horizontal" && campaigns.End > date) {
 
       res.render('landingPages/photocollectionpage', {
-        Banner: campaigns.Banner,
-        Logo: campaigns.Logo,
-        Title: campaigns.Title,
-        Primarycolor: campaigns.Primarycolor,
-        Start: campaigns.Start,
-        End: campaigns.End,
-        Description: campaigns.Description,
-        slug: campaigns.slug,
+        campaign : campaigns,
         sitekey: process.env.RECAPTCHA_SITE_KEY,
       });
 
@@ -171,6 +155,7 @@ exports.getEntriesCollection = (req, res) => {
 
     } else {
       res.render('expired');
+
 
     }
 

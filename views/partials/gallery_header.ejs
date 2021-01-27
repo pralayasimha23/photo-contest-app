@@ -13,6 +13,16 @@
     
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
 
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="<%=campaign.Title%>" />
+    <meta property="og:description" content="<%-campaign.Description.replace(/<[^>]*>?/gm, '').slice(0,100); %>" />
+    <meta property="og:image" content="/campaign/<%=campaign.Banner%>" />
+    <meta property="og:url" content="/photoapp/<%=campaign.slug%>" />
+    <meta property="og:site_name" content="ClicxMania" />
+    <meta name="twitter:title" content="<%=campaign.Title%>" />
+    <meta name="twitter:image" content="/campaign/<%=campaign.Banner%>" />
+    <meta name="twitter:url" content="/photoapp/<%=campaign.slug%>" />
+    <meta name="twitter:card" content="summary" />
 
     <!-- font-awesome css -->
     <link rel="stylesheet" type="text/css" href="/gallery_css/font-awesome.min.css">

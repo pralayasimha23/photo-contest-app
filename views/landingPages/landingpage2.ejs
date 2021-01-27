@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-lg-2 col-md-2 col-sm-12 center-block d-block mx-auto">
                         <div class="logo-area ">
-                            <a href="index.html"><img class="rounded-circle" style="height: 100px;" src="/logos/<%=Logo%>" alt="logo"></a>
+                            <a href="index.html"><img class="rounded-circle" style="height: 100px;" src="/logos/<%=campaign.Logo%>" alt="logo"></a>
                         </div>
                     </div>
                   
@@ -74,12 +74,12 @@
                 <div class="col-sm-12 mb-50">
                     <div class="single-section text-center">
                         <div class="section-img ">
-                            <img class="img-fluid"  style="height:600px; width: 1200px; margin:0 auto;" src="/campaign/<%=Banner%>" alt="single Images" />
+                            <img class="img-fluid"  style="height:600px; width: 1200px; margin:0 auto;" src="/campaign/<%=campaign.Banner%>" alt="single Images" />
                         </div>
-                        <h3 class="headding-title"><%=Title%></h3>
+                        <h3 class="headding-title"><%=campaign.Title%></h3>
                         <ul id="meta-text">
                           
-                            <li class="date"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Ends on: <%=End.toLocaleDateString('en-GB', {  
+                            <li class="date"><i class="fa fa-calendar-times-o" aria-hidden="true"></i>Ends on: <%=campaign.End.toLocaleDateString('en-GB', {  
                                 day : 'numeric',
                                 month : 'short',
                                 year : 'numeric'
@@ -91,25 +91,23 @@
                         <div class="countdown-section">
                             <div class="row">
                                 <div class="offset-md-3 offset-sm-3 col-sm-6">
-                                    <div class="CountDownTimer" data-date="<%=End.toISOString().slice(0,10); %> 00:00:00">      </div>
+                                    <div class="CountDownTimer" data-date="<%=campaign.End.toISOString().slice(0,10); %> 00:00:00">      </div>
                                 </div>
                             </div>
                         </div>
-                        <p class="des"><%-Description%></p>
+                        <p class="des"><%-campaign.Description%></p>
 
                            <!-- Multistep Form Start Here -->
                   <div style="overflow:visible" class="multistep-form pt-100 pb-100">
-<<<<<<< HEAD
-                
-=======
+
                     <div class="container">
->>>>>>> d826c5c39d541542577c9203c7fd7edcf99b6b2c
+
                         <div class="row">
                             <div class="col-lg-12 col-md-12 col-sm-12">
                                 <!-- multistep form -->
                                 <form class="regform" id="fileUploadForm" >
                                     <!-- progressbar -->
-                                    <ul id="progressbar">
+                    `                <ul id="progressbar">
                                         <li class="active">Your Personal Informations</li>
                                         <li>Upload Photo Informations</li>
                                         <li>Preview Details Again</li>
@@ -169,8 +167,8 @@
                                         <div class="link-section center-block d-block mx-auto" >
                                             <!-- <a class="icon icon-share blue-ocean share-btn primary-btn">Share the contest</a> -->
                                             <div class="addthis_inline_share_toolbox"></div>
-                                            <a href="/photoapp/<%=slug%>" class="joni-btn primary-btn">Submit Another</a>
-                                            <a href="/photoapp/<%=slug%>/gallery/1" class="joni-btn primary-btn">View other entries</a>
+                                            <a href="/photoapp/<%=campaign.slug%>" class="joni-btn primary-btn">Submit Another</a>
+                                            <a href="/photoapp/<%=campaign.slug%>/gallery/1" class="joni-btn primary-btn">View other entries</a>
                                         </div>
                                     </fieldset>
                                 </form>

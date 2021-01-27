@@ -197,7 +197,7 @@ exports.getGallery = (req, res) => {
 
           res.render('gallery2', {
             photolist: photos,
-            campaign,
+            campaign: campaign,
             current: page,
             pages: Math.ceil(count / perPage),
             slug: slug

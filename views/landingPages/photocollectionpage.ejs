@@ -24,7 +24,7 @@
             <!-- To enable the background image, follow these steps: -->
             <!-- - Comment the background video line -->
             <!-- - Uncomment the next lines -->
-            <img src="/campaign/<%=Banner%>" alt="Cover">
+            <img src="/campaign/<%=campaign.Banner%>" alt="Cover">
 
             <!-- BACKGROUND VIDEO -->
             <!-- To enable the background video, follow these steps: -->
@@ -40,7 +40,7 @@
             <div class="contain">
                 <div>
                     <div  >
-                        <img   style="max-height:150px;" src="/logos/<%=Logo%>" class="logo img-circle" alt="Logo">
+                        <img   style="max-height:150px;" src="/logos/<%=campaign.Logo%>" class="logo img-circle" alt="Logo">
                         <h1 class="title">Hurry Up!<br/>Contest will end in</h1>
                         <!-- <p class="description"></p> -->
                         <!-- Set the data-countdown value with this format: yyyy/mm/dd hh:ii:ss -->
@@ -48,8 +48,8 @@
                         <!-- To enable the countdown, uncomment the import .js line and the next line: -->
                         
                     
-                        <input type="hidden" id="timecount1" name="custId" value="<%=End.toISOString();%> ">
-                            <div class="countdown" data-countdown="<%=End.toISOString().slice(0,10);%>" >
+                        <input type="hidden" id="timecount1" name="custId" value="<%=campaign.End.toISOString();%> ">
+                            <div class="countdown" data-countdown="<%=campaign.End.toISOString().slice(0,10);%>" >
                             <div class="days"> 
                                 <div>&nbsp;</div>
                                 <span>days</span>
@@ -72,7 +72,7 @@
                         <div class=" sticky buttons centered">
                             <a class="icon icon-share blue-ocean share-btn">Share</a>
                             <a href="#" class="icon icon-user dark-green" data-toggle="modal" data-target="#popup1">Terms And Conditions</a>
-                            <a href="/photoapp/<%= slug %>/gallery/1 " class="icon icon-pic red ">View Others Entries</a>
+                            <a href="/photoapp/<%=campaign.slug %>/gallery/1 " class="icon icon-pic red ">View Others Entries</a>
                         </div>
                         <!-- <a href="https://www.google.it/maps/place/21+Jackson,+Irvine,+CA+92620,+Stati+Uniti/@33.7086154,-117.7863857,14z/data=!4m5!3m4!1s0x80dcdcec4f7e4d73:0x492ea9ce607ca568!8m2!3d33.708611!4d-117.7688709" target="_blank" class="address">21 Jackson BLVD 120<br />LOS ANGELES</a> -->
                         <div class="social">
@@ -215,7 +215,7 @@
 				<div class="modal-content">
 					<img src="Landingpage/assets/imgs/popup-cover.jpg" class="fit-width" alt="">
 					<h3>Rules & Regulations</h3>
-					<p><%-Description%></p>
+					<p><%-campaign.Description%></p>
 					
                     <div class="buttons centered marginTop">
 						<a href="#" class="black" data-dismiss="modal">CLOSE</a>

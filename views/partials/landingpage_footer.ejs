@@ -228,7 +228,7 @@ var input = document.querySelector("#phone");
      $.ajax({
          type: "POST",
          enctype: 'multipart/form-data',
-         url: "/photoapp/<%=slug%> ",
+         url: "/photoapp/<%=campaign.slug%> ",
          data: data,
          processData: false, 
          contentType: false,
