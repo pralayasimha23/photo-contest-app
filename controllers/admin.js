@@ -114,7 +114,7 @@ exports.getCampList = (req, res) => {
       res.render('admin/campaign-list', {
         title: 'Campaigns',
         camplist: campaign,
-       
+
       });
 
     });
@@ -141,13 +141,13 @@ exports.getEntriesCollection = (req, res) => {
 
     if (campaigns.TemplateType == "Vertical" && campaigns.End > date) {
       res.render('landingPages/landingpage2', {
-        campaign : campaigns,
+        campaign: campaigns,
         sitekey: process.env.RECAPTCHA_SITE_KEY,
       });
     } else if (campaigns.TemplateType == "Horizontal" && campaigns.End > date) {
 
       res.render('landingPages/photocollectionpage', {
-        campaign : campaigns,
+        campaign: campaigns,
         sitekey: process.env.RECAPTCHA_SITE_KEY,
       });
 
@@ -184,47 +184,53 @@ exports.getAnalytics = (req, res) => {
 
         PhotoEntries.aggregate(
           [{
-             $match : { CampaignId: campaign._id } },
-          {$group: {
-            _id: {
-              CampaignId: '$CampaignId'
+              $match: {
+                CampaignId: campaign._id
+              }
             },
-            Totallikes: {
-              $sum: "$likes_count"
-            },
-            
-            
-            
-          }
-        }], function (err, result) {
-
-          // PhotoEntries.aggregate([{ $group: {_id: "$CampaignId",Participants: { $size: "$Name" } }} ]{   
-          
-        
-             
-
-          if (req.user && req.user.role == 'Admin' && count >= 1) {
-
-
-            res.render('admin/analytics', {
-              title: 'Analytics',
-              campaign: campaign,
-              photolist: photos,
-              Count: count,
-              Totallikes:result[0].Totallikes,
-            });
-          } else {
-
-            res.render('noanalytics', {
-              Count: count
-            })
-
-
-          }
+            {
+              $group: {
+                _id: {
+                  CampaignId: '$CampaignId'
+                },
+                Totallikes: {
+                  $sum: "$likes_count"
+                },
 
 
 
-        })
+              }
+            }
+          ],
+          function (err, result) {
+
+            // PhotoEntries.aggregate([{ $group: {_id: "$CampaignId",Participants: { $size: "$Name" } }} ]{   
+
+
+
+
+            if (req.user && req.user.role == 'Admin' && count >= 1) {
+
+
+              res.render('admin/analytics', {
+                title: 'Analytics',
+                campaign: campaign,
+                photolist: photos,
+                Count: count,
+                Totallikes: result[0].Totallikes,
+              });
+            } else {
+
+              res.render('noanalytics', {
+                Count: count
+              })
+
+
+            }
+
+
+
+          })
 
       });
     });
@@ -272,7 +278,7 @@ exports.postDeleteCampaign = (req, res, next) => {
 
 // exports.photoPlagarisam = (req, res, next) => {
 //   // router.post('/delete', function (req, res, next) {
-  
+
 //   let taskId = req.body.taskId;
 // console.log(taskId);
 //   PhotoEntries.findOne({
@@ -286,12 +292,12 @@ exports.postDeleteCampaign = (req, res, next) => {
 //       console.log(results)
 //     }
 //     let baseurl = 'https://clixmania.herokuapp.com'
-  
+
 //     console.log(baseurl+'/PhotoContestUploads/'+ filename )
 //     reverseImageSearch(baseurl+'/PhotoContestUploads/'+ filename , doSomething)
-  
+
 //   })
-  
+
 // };
 
 // Delete Todo

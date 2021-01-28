@@ -11,11 +11,6 @@ const User = require('../models/User');
 
 const randomBytesAsync = promisify(crypto.randomBytes);
 
-
-
-
-
-
 /**
  * GET /login
  * Login page.

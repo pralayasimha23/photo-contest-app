@@ -1,14 +1,13 @@
 <%- include('partials/gallery_header') %>
 
 <style>
-body{
-    background-color:#f3f3f4 !important;
-}
-.home-gellary-area .single-gellary{
-    background:white;
-}
+    body {
+        background-color: #f3f3f4 !important;
+    }
 
-
+    .home-gellary-area .single-gellary {
+        background: white;
+    }
 </style>
 
 <!-- Inner Page Header serction end here -->
@@ -50,9 +49,11 @@ body{
                         <div class="overley">
                             <ul>
                                 <li><a href="<%=photo.Description.slice(0,60) + '....'%>" data-lightbox="example-set"
-                                        data-title="<%=photo.Description.slice(0,60) + '....'%>"><i class="fa fa-eye"></i></a></li>
+                                        data-title="<%=photo.Description.slice(0,60) + '....'%>"><i
+                                            class="fa fa-eye"></i></a></li>
                                 <li><a href="/PhotoContestUploads/<%=photo.Photo%>" data-lightbox="example-set"
-                                        data-title="<%=photo.Description.slice(0,60) + '....'%>"><i class="fa fa-search"></i></a></li>
+                                        data-title="<%=photo.Description.slice(0,60) + '....'%>"><i
+                                            class="fa fa-search"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -66,7 +67,8 @@ body{
                             <li>
 
                                 <h3><a href="/PhotoContestUploads/<%=photo.Photo%>" data-lightbox="example-set"
-                                        data-title="<%=photo.Description.slice(0,25) + '....'%>"><%=photo.Description.slice(0,25) + '....'%> <span>by
+                                        data-title="<%=photo.Description.slice(0,25) + '....'%>"><%=photo.Description.slice(0,25) + '....'%>
+                                        <span>by
                                             <%=photo.Name%> </span></a>
 
                                 </h3>
@@ -81,7 +83,7 @@ body{
 
 
 
-                            <li >
+                            <li>
 
 
                                 <button type="button" id="<%=photo.id %>" class="btn btn-info" data-toggle="modal"

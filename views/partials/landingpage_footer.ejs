@@ -1,13 +1,13 @@
 <!-- To enable the share plugin, uncomment the next lines -->
 <section id="share-plugin-content" class="j-hide">
-    <div class="addthis_inline_share_toolbox"></div>
+  <div class="addthis_inline_share_toolbox"></div>
 </section>
 <!-- END SHARE PLUGIN CONTENT -->
-<script src="/Landingpage/assets/js/jquery-3.2.1.min.js"></script> 
+<script src="/Landingpage/assets/js/jquery-3.2.1.min.js"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
- <script src="/Landingpage/contactme/js/contactme-config.js"></script>
-<script src="/Landingpage/contactme/js/contactme-1.4.js"></script> 
+<script src="/Landingpage/contactme/js/contactme-config.js"></script>
+<script src="/Landingpage/contactme/js/contactme-1.4.js"></script>
 <script src="/Landingpage/contactme/js/formdata.min.js"></script>
 
 <script src="/Landingpage/assets/js/modernizr-touch-events.js"></script>
@@ -18,8 +18,8 @@
 <!-- <script src="assets/lightgallery/js/lightgallery.min.js"></script> -->
 
 <!-- <script src="/Landingpage/contactme/js/weakmap-polyfill.min.js"></script> -->
- 
- <!-- <script src="/Landingpage/contactme/js/bootstrap-datepicker.min.js"></script>
+
+<!-- <script src="/Landingpage/contactme/js/bootstrap-datepicker.min.js"></script>
 <script src="/Landingpage/contactme/js/bootstrap-datepicker-lang/en.js"></script>
 <script src="/Landingpage/contactme/js/jquery.timepicker.min.js"></script>
 <script src="/Landingpage/contactme/js/select2.full.min.js"></script>
@@ -38,318 +38,314 @@
 <!-- 
 <script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment-with-locales.min.js"></script> -->
 
- <!-- Jquery Validate -->
- <script src="/inspia/js/plugins/validate/jquery.validate.min.js"></script>   
+<!-- Jquery Validate -->
+<script src="/inspia/js/plugins/validate/jquery.validate.min.js"></script>
 <!-- To enable the modal popup, uncomment the next line -->
 <script src="/Landingpage/assets/js/bootstrap.min.js"></script>
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-59d57c395c2885d0"></script>
 
 <script src="/Landingpage/assets/js/jonny-1.2.js"></script>
 <script>
-
-
-
-$("#fileUploadForm").validate({
-    rules: {
-       name: {
-            required: true,
-         
-        },
-        email: {
-            required: true,
-           
-        },
-        file: {
-           required: true,
-           accept: 'jpg|png'
-       
-        },
-        
-        description: {
-           required: true,
-           minlength:100
-           
-        },
-    
-    }
-});
-
-
-//  File upload
-
-
-
-// $(window).on('load',function() {
-  
-    
-// var ds = document.getElementById("timecount1").value;
-
-//   const date = moment(new Date(ds.substr(0, 16)));
-//   const d =date.format("YYYY-MM-DD 00:00:00");
-//  var ele  = document.getElementsByClassName("countdown")[0];
-//  ele.setAttribute('data-countdown',d)
-
-
-// });
-$(window).load(function () {
-                $(".template-preloader-rapper").fadeOut(500);
-            });
-    
-
-
-
-function readURL(input) {
-  if (input.files && input.files[0]) {
-
-    var reader = new FileReader();
-
-    reader.onload = function(e) {
-      $('.image-upload-wrap').hide();
-
-      $('.file-upload-image').attr('src', e.target.result);
-      $('.file-upload-content').show();
-
-
-     
-      $('.image-title').html(input.files[0].name.slice(0,20) + '....');
-    };
-
-    reader.readAsDataURL(input.files[0]);
-
-  } else {
-    removeUpload();
-  }
-}
-
-function removeUpload() {
-  $('.file-upload-input').replaceWith($('.file-upload-input').clone());
-  $('.file-upload-content').hide();
-  $('.image-upload-wrap').show();
-}
-$('.image-upload-wrap').bind('dragover', function () {
-		$('.image-upload-wrap').addClass('image-dropping');
-	});
-	$('.image-upload-wrap').bind('dragleave', function () {
-		$('.image-upload-wrap').removeClass('image-dropping');
-});
-
-
-//intlTelInput
-
-var input = document.querySelector("#phone");
-    window.intlTelInput(input, {
-      allowDropdown: true,
-      autoHideDialCode: true,
-      autoPlaceholder: "polite",
-      dropdownContainer: null,
-      excludeCountries: null,
-      formatOnDisplay: true,
-      geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-          var countryCode = (resp && resp.country) ? resp.country : "";
-          callback(countryCode);
-        });
-      },
-      hiddenInput: "full_number",
-      initialCountry: "in",
-      localizedCountries: { 'de': 'Deutschland' },
-      nationalMode: false,
-      onlyCountries: ['us', 'in', 'ch', 'ca', 'do'],
-      placeholderNumberType: "MOBILE",
-      preferredCountries: [],
-      separateDialCode: true,
-      utilsScript: "/Landingpages/countryinput/js/utils.js",
-    });
-
-
-
-    // $(document).ready(function () {
- 
- $("#contactMesubmit").click(function (event) {
-  
-  var email = $('#email').val();
-
-
   $("#fileUploadForm").validate({
     rules: {
-       name: {
-            required: true,
-         
-        },
-        email: {
-            required: true,
-           
-        },
-        file: {
-           required: true,
-           accept: 'jpg|png'
-       
-        },
-        
-        description: {
-           required: true,
-           minlength:100
-           
-        },
-    
+      name: {
+        required: true,
+
+      },
+      email: {
+        required: true,
+
+      },
+      file: {
+        required: true,
+        accept: 'jpg|png'
+
+      },
+
+      description: {
+        required: true,
+        minlength: 100
+
+      },
+
     }
   });
 
-  // if (email.trim() == '') {
-  // // alert('Please enter your email.');
-  //           $('form #email').addClass("error");
-  //           return false;
-  // } else if ($('div.file-upload-content img').attr('src') == '') {
-           
-  //           $('div.drag-text h3').addClass('error');
-  //           return false;
-  // }else{
-  //    // Get form
-     var form = $('#fileUploadForm')[0];
+
+  //  File upload
+
+
+
+  // $(window).on('load',function() {
+
+
+  // var ds = document.getElementById("timecount1").value;
+
+  //   const date = moment(new Date(ds.substr(0, 16)));
+  //   const d =date.format("YYYY-MM-DD 00:00:00");
+  //  var ele  = document.getElementsByClassName("countdown")[0];
+  //  ele.setAttribute('data-countdown',d)
+
+
+  // });
+  $(window).load(function () {
+    $(".template-preloader-rapper").fadeOut(500);
+  });
+
+
+
+
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('.image-upload-wrap').hide();
+
+        $('.file-upload-image').attr('src', e.target.result);
+        $('.file-upload-content').show();
+
+
+
+        $('.image-title').html(input.files[0].name.slice(0, 20) + '....');
+      };
+
+      reader.readAsDataURL(input.files[0]);
+
+    } else {
+      removeUpload();
+    }
+  }
+
+  function removeUpload() {
+    $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+    $('.file-upload-content').hide();
+    $('.image-upload-wrap').show();
+  }
+  $('.image-upload-wrap').bind('dragover', function () {
+    $('.image-upload-wrap').addClass('image-dropping');
+  });
+  $('.image-upload-wrap').bind('dragleave', function () {
+    $('.image-upload-wrap').removeClass('image-dropping');
+  });
+
+
+  //intlTelInput
+
+  var input = document.querySelector("#phone");
+  window.intlTelInput(input, {
+    allowDropdown: true,
+    autoHideDialCode: true,
+    autoPlaceholder: "polite",
+    dropdownContainer: null,
+    excludeCountries: null,
+    formatOnDisplay: true,
+    geoIpLookup: function (callback) {
+      $.get("http://ipinfo.io", function () {}, "jsonp").always(function (resp) {
+        var countryCode = (resp && resp.country) ? resp.country : "";
+        callback(countryCode);
+      });
+    },
+    hiddenInput: "full_number",
+    initialCountry: "in",
+    localizedCountries: {
+      'de': 'Deutschland'
+    },
+    nationalMode: false,
+    onlyCountries: ['us', 'in', 'ch', 'ca', 'do'],
+    placeholderNumberType: "MOBILE",
+    preferredCountries: [],
+    separateDialCode: true,
+    utilsScript: "/Landingpages/countryinput/js/utils.js",
+  });
+
+
+
+  // $(document).ready(function () {
+
+  $("#contactMesubmit").click(function (event) {
+
+    var email = $('#email').val();
+
+
+    $("#fileUploadForm").validate({
+      rules: {
+        name: {
+          required: true,
+
+        },
+        email: {
+          required: true,
+
+        },
+        file: {
+          required: true,
+          accept: 'jpg|png'
+
+        },
+
+        description: {
+          required: true,
+          minlength: 100
+
+        },
+
+      }
+    });
+
+    // if (email.trim() == '') {
+    // // alert('Please enter your email.');
+    //           $('form #email').addClass("error");
+    //           return false;
+    // } else if ($('div.file-upload-content img').attr('src') == '') {
+
+    //           $('div.drag-text h3').addClass('error');
+    //           return false;
+    // }else{
+    //    // Get form
+    var form = $('#fileUploadForm')[0];
 
     // Create an FormData object 
-     var data = new FormData(form);
+    var data = new FormData(form);
 
     // If you want to add an extra field for the FormData
     //  data.append("slug", "This is some extra data, testing");
 
     // disabled the submit button
-     $("#contactMesubmit").prop("disabled", true);
+    $("#contactMesubmit").prop("disabled", true);
 
     // Start loading
     // var l = Ladda.bind('#contactMesubmit');
-      
+
 
     //     l.ladda( 'start' );
-      
-     //stop submit the form, we will post it manually.
-     event.preventDefault();
 
-     $.ajax({
-         type: "POST",
-         enctype: 'multipart/form-data',
-         url: "/photoapp/<%=campaign.slug%> ",
-         data: data,
-         processData: false, 
-         contentType: false,
-         cache: false,
-       
-         success: function (result) {
-          console.log(result);
-  if(result.msg=='Completed'){
-    console.log(result.msg);
+    //stop submit the form, we will post it manually.
+    event.preventDefault();
 
-  
-    // l.ladda( 'stop' );
-    
-    $("form").trigger("reset");
-    removeUpload();
-    
-    $("#contactMesubmit").prop("disabled", false);
-         
-    // $(" #contactMesubmit").text.remove();
+    $.ajax({
+      type: "POST",
+      enctype: 'multipart/form-data',
+      url: "/photoapp/<%=campaign.slug%> ",
+      data: data,
+      processData: false,
+      contentType: false,
+      cache: false,
 
-                            // let currentElement = document.getElementById('contactMesubmit');
-                            // currentElement.text.remove();
-                            // console.log("Current Element Checking : ",);
+      success: function (result) {
+        console.log(result);
+        if (result.msg == 'Completed') {
+          console.log(result.msg);
 
-                            // currentElement.innerHTML = "Selected";
-                            // console.log("Child Nodes", currentElement.children);
 
-           $(".msgsubmit").html("<div><p style='color:green; border: 2px solid green;padding:5px;'>Entry successfully sent<p></div>")
-            $(".msgsubmit").delay(2000).fadeOut('slow');
+          // l.ladda( 'stop' );
 
-            //  $("#contactMesubmit").html("Entry successfully sent")
-             console.log("SUCCESS : ", data);
-             
-            }else {
-        
-        //  error: function (e) {
+          $("form").trigger("reset");
+          removeUpload();
 
-            //  $("#output").text(e.responseText);
-            //  console.log("ERROR : ", e);
-             $("#contactMesubmit").prop("disabled", false);
+          $("#contactMesubmit").prop("disabled", false);
+
+          // $(" #contactMesubmit").text.remove();
+
+          // let currentElement = document.getElementById('contactMesubmit');
+          // currentElement.text.remove();
+          // console.log("Current Element Checking : ",);
+
+          // currentElement.innerHTML = "Selected";
+          // console.log("Child Nodes", currentElement.children);
+
+          $(".msgsubmit").html(
+            "<div><p style='color:green; border: 2px solid green;padding:5px;'>Entry successfully sent<p></div>"
+            )
+          $(".msgsubmit").delay(2000).fadeOut('slow');
+
+          //  $("#contactMesubmit").html("Entry successfully sent")
+          console.log("SUCCESS : ", data);
+
+        } else {
+
+          //  error: function (e) {
+
+          //  $("#output").text(e.responseText);
+          //  console.log("ERROR : ", e);
+          $("#contactMesubmit").prop("disabled", false);
         }
-         }
-        
-     });
+      }
 
-     
+    });
+
+
     // //  l.ladda( 'stop' );
     //   }) 
-  
- });
 
-// });
+  });
 
-
-// $('#contactMesubmit').each(function(index) {
-
-// var $form = $(this),
-//     $msg = $form.find('.msg'),
-//     $submitBtn = $form.find('button[type=submit]');
-
-// // Handle Form Submit
-// $form.submit(function(e) {
-//     // prevent form submit
-//     e.preventDefault();
-
-//     // Prevent double submission by disabling the submit button
-//     $submitBtn.html($submitBtn.data('sending')).attr('disabled', 'disabled');
-
-//     // Hide previous messages
-//     $msg.fadeOut(0);
-
-//     // Validate the Form Data
-//     var validate = validateForm($form);
-//     if (!validate.success) {
-//         if (validate.errors.length > 0) {
-//             showMessage($msg, errorsArrayToHtml(validate.errors), 'error');
-//             // Re-enable submit button
-//             $submitBtn.html($submitBtn.data('text')).removeAttr('disabled');
-//             return null;
-//         }
-//     }
-
-//     if (typeof(grecaptcha) != 'undefined' && $form.find('.re-captcha').length > 0 && $form.find('.re-captcha').hasClass('invisible')) {
-//         if (!grecaptcha.execute($form.find('.re-captcha').data('grecaptcha'))) {
-//             // Re-enable submit button
-//             $submitBtn.html($submitBtn.data('text')).removeAttr('disabled');
-//             return null;
-//         }
-//     } else {
-//         // If reCAPTCHA V2 is enabled, check also if is checked
-//         if (typeof(grecaptcha) != 'undefined' && $form.find('.re-captcha').length > 0 && !$form.find('.re-captcha').hasClass('invisible')) {
-//             if (grecaptcha.getResponse($form.find('.re-captcha').data('grecaptcha')) == "") {
-//                 showMessage($msg, lang.recaptcha.empty, 'error');
-//                 // Re-enable submit button
-//                 $submitBtn.html($submitBtn.data('text')).removeAttr('disabled');
-//                 return null;
-//             }
-//         }
-
-//         submitAjaxForm($form);
-//     }
-// });
-
-// $submitBtn.attr('data-text', $submitBtn.html());
-// });
+  // });
 
 
+  // $('#contactMesubmit').each(function(index) {
 
+  // var $form = $(this),
+  //     $msg = $form.find('.msg'),
+  //     $submitBtn = $form.find('button[type=submit]');
 
+  // // Handle Form Submit
+  // $form.submit(function(e) {
+  //     // prevent form submit
+  //     e.preventDefault();
 
-// let currentElement = document.getElementById(currentTrId);
-//                             currentElement.children[4].children[0].remove();
-//                             console.log("Current Element Checking : ",);
+  //     // Prevent double submission by disabling the submit button
+  //     $submitBtn.html($submitBtn.data('sending')).attr('disabled', 'disabled');
 
-//                             currentElement.children[3].innerHTML = "Selected";
-//                             console.log("Child Nodes", currentElement.children);
+  //     // Hide previous messages
+  //     $msg.fadeOut(0);
+
+  //     // Validate the Form Data
+  //     var validate = validateForm($form);
+  //     if (!validate.success) {
+  //         if (validate.errors.length > 0) {
+  //             showMessage($msg, errorsArrayToHtml(validate.errors), 'error');
+  //             // Re-enable submit button
+  //             $submitBtn.html($submitBtn.data('text')).removeAttr('disabled');
+  //             return null;
+  //         }
+  //     }
+
+  //     if (typeof(grecaptcha) != 'undefined' && $form.find('.re-captcha').length > 0 && $form.find('.re-captcha').hasClass('invisible')) {
+  //         if (!grecaptcha.execute($form.find('.re-captcha').data('grecaptcha'))) {
+  //             // Re-enable submit button
+  //             $submitBtn.html($submitBtn.data('text')).removeAttr('disabled');
+  //             return null;
+  //         }
+  //     } else {
+  //         // If reCAPTCHA V2 is enabled, check also if is checked
+  //         if (typeof(grecaptcha) != 'undefined' && $form.find('.re-captcha').length > 0 && !$form.find('.re-captcha').hasClass('invisible')) {
+  //             if (grecaptcha.getResponse($form.find('.re-captcha').data('grecaptcha')) == "") {
+  //                 showMessage($msg, lang.recaptcha.empty, 'error');
+  //                 // Re-enable submit button
+  //                 $submitBtn.html($submitBtn.data('text')).removeAttr('disabled');
+  //                 return null;
+  //             }
+  //         }
+
+  //         submitAjaxForm($form);
+  //     }
+  // });
+
+  // $submitBtn.attr('data-text', $submitBtn.html());
+  // });
 
 
 
 
 
+  // let currentElement = document.getElementById(currentTrId);
+  //                             currentElement.children[4].children[0].remove();
+  //                             console.log("Current Element Checking : ",);
+
+  //                             currentElement.children[3].innerHTML = "Selected";
+  //                             console.log("Child Nodes", currentElement.children);
 </script>
 
 

@@ -29,7 +29,9 @@ const fileUpload = require('express-fileupload');
  * Load environment variables from .env file, where API keys and passwords are configured.
  * 
  */
-dotenv.config({ path: '.env.example' });
+dotenv.config({
+  path: '.env.example'
+});
 
 /**
  * Controllers (route handlers).
@@ -92,12 +94,16 @@ app.use(fileUpload());
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: process.env.SESSION_SECRET,
-  cookie: { maxAge: 1209600000 }, // two weeks in milliseconds
+  cookie: {
+    maxAge: 1209600000
+  }, // two weeks in milliseconds
   store: new MongoStore({
     url: process.env.MONGODB_URI,
     autoReconnect: true,
@@ -112,7 +118,7 @@ app.use(flash());
 //     // Multer multipart/form-data handling needs to occur before the Lusca CSRF check.
 //     next();
 //   } else {
-   
+
 //     lusca.csrf()(req, res, next);
 //   }
 // });
@@ -128,7 +134,7 @@ app.use((req, res, next) => {
 });
 
 app.use((req, res, next) => {
- 
+
 
   next();
 });
@@ -136,14 +142,14 @@ app.use((req, res, next) => {
 
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
-  if (!req.user
-    && req.path !== '/login'
-    && req.path !== '/signup'
-    && !req.path.match(/^\/auth/)
-    && !req.path.match(/\./)) {
+  if (!req.user &&
+    req.path !== '/login' &&
+    req.path !== '/signup' &&
+    !req.path.match(/^\/auth/) &&
+    !req.path.match(/\./)) {
     req.session.returnTo = req.originalUrl;
-  } else if (req.user
-    && (req.path === '/account' || req.path.match(/^\/api/))) {
+  } else if (req.user &&
+    (req.path === '/account' || req.path.match(/^\/api/))) {
     req.session.returnTo = req.originalUrl;
   }
   next();
@@ -154,24 +160,37 @@ app.use((req, res, next) => {
 app.use((req, res, next) => {
   // After successful login, redirect back to the intended page
   if (!req.voter
-  
-    && !req.path.match(/^\/auth/)
-    && !req.path.match(/\./)) {
+
+    &&
+    !req.path.match(/^\/auth/) &&
+    !req.path.match(/\./)) {
     req.session.returnTo = req.originalUrl;
-  } else if (req.voter
-    && (req.path === '/account' || req.path.match(/^\/api/))) {
+  } else if (req.voter &&
+    (req.path === '/account' || req.path.match(/^\/api/))) {
     req.session.returnTo = req.originalUrl;
   }
   next();
 });
 
 
-app.use('/', express.static(path.join(__dirname, 'public'), { maxAge: 31557600000 }));
-app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/chart.js/dist'), { maxAge: 31557600000 }));
-app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd'), { maxAge: 31557600000 }));
-app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'), { maxAge: 31557600000 }));
-app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/jquery/dist'), { maxAge: 31557600000 }));
-app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts'), { maxAge: 31557600000 }));
+app.use('/', express.static(path.join(__dirname, 'public'), {
+  maxAge: 31557600000
+}));
+app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/chart.js/dist'), {
+  maxAge: 31557600000
+}));
+app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/popper.js/dist/umd'), {
+  maxAge: 31557600000
+}));
+app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/bootstrap/dist/js'), {
+  maxAge: 31557600000
+}));
+app.use('/js/lib', express.static(path.join(__dirname, 'node_modules/jquery/dist'), {
+  maxAge: 31557600000
+}));
+app.use('/webfonts', express.static(path.join(__dirname, 'node_modules/@fortawesome/fontawesome-free/webfonts'), {
+  maxAge: 31557600000
+}));
 
 /**
  * Primary app routes.
@@ -193,7 +212,7 @@ app.get('/contact', contactController.getContact);
 app.post('/contact', contactController.postContact);
 app.get('/account/verify', passportConfig.isAuthenticated, userController.getVerifyEmail);
 app.get('/account/verify/:token', passportConfig.isAuthenticated, userController.getVerifyEmailToken);
-app.get('/login/:token',  userController.getVerifyEmailLoginToken);
+app.get('/login/:token', userController.getVerifyEmailLoginToken);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
@@ -225,7 +244,7 @@ app.get('/campaign-list', adminController.getCampList);
 
 
 // app.get('/photoapp/:slug', adminController.getEntriesCollection);
-app.get('/photoapp/:slug',  adminController.getEntriesCollection);
+app.get('/photoapp/:slug', adminController.getEntriesCollection);
 
 app.post('/photoapp/:slug', leadcollectionController.postEntriesCollection);
 // app.get('/photoapp/:slug/success',  leadcollectionController.submitSuccess);
@@ -243,29 +262,35 @@ app.get('/photoapp/:slug/analytics', adminController.getAnalytics);
 
 
 
- 
-
-app.post('/campaign/:id',  adminController.postDeleteCampaign);
 
 
-
-app.post('/delete',  adminController.photoDelete);
-
-
-app.post('/complete',  adminController.photoComplete);
-
-
-app.post('/like',  leadcollectionController.postLikes);
+app.post('/campaign/:id', adminController.postDeleteCampaign);
 
 
 
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email', 'https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets.readonly'], accessType: 'offline', prompt: 'consent' }));
+app.post('/delete', adminController.photoDelete);
 
-app.get('/auth/google/callback',  passport.authenticate('google', { failureRedirect: '/' }),(req, res) => {
+
+app.post('/complete', adminController.photoComplete);
+
+
+app.post('/like', leadcollectionController.postLikes);
+
+
+
+app.get('/auth/google', passport.authenticate('google', {
+  scope: ['profile', 'email', 'https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/spreadsheets.readonly'],
+  accessType: 'offline',
+  prompt: 'consent'
+}));
+
+app.get('/auth/google/callback', passport.authenticate('google', {
+  failureRedirect: '/'
+}), (req, res) => {
   // backURL=req.header('Referer');
   // do your thang
   // res.redirect(backURL);
-  res.redirect( req.session.returnTo  )
+  res.redirect(req.session.returnTo)
 
 
 });
@@ -274,7 +299,7 @@ app.get('/auth/google/callback',  passport.authenticate('google', { failureRedir
 
 
 
-app.use(function(req, res, next) { // i catch 404s
+app.use(function (req, res, next) { // i catch 404s
   res.status(404);
   res.render('404');
 });

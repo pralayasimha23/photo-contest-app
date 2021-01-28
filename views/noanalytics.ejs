@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <div class="template">
     <div class="spinner">
-        <div class="double-bounce1"></div>
-        <div class="double-bounce2"></div>
+      <div class="double-bounce1"></div>
+      <div class="double-bounce2"></div>
     </div>
-</div>
-<!-- inspia style -->
-<link href="/inspia/css/style.css" rel="stylesheet">
+  </div>
+  <!-- inspia style -->
+  <link href="/inspia/css/style.css" rel="stylesheet">
   <style>
     * {
       line-height: 1.2;
@@ -29,21 +29,21 @@
     }
 
     body {
-    background-color: #f3f3f4;
+      background-color: #f3f3f4;
       display: table-cell;
-      vertical-align: middle; 
-       margin: 2em auto; 
+      vertical-align: middle;
+      margin: 2em auto;
 
     }
 
- 
+
 
     h1 {
       color: #555;
       font-size: 2em;
       font-weight: 400;
       padding: 5em auto;
-       /* vertical-align: middle;  */
+      /* vertical-align: middle;  */
     }
 
     p {
@@ -68,63 +68,67 @@
 
 
     .spinner {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    margin: 100px auto;
-}
+      width: 40px;
+      height: 40px;
+      position: relative;
+      margin: 100px auto;
+    }
 
-.double-bounce1 {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #333;
-    opacity: 0.6;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-animation: sk-bounce 2s infinite ease-in-out;
-    animation: sk-bounce 2s infinite ease-in-out;
-}
+    .double-bounce1 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #333;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-animation: sk-bounce 2s infinite ease-in-out;
+      animation: sk-bounce 2s infinite ease-in-out;
+    }
 
-.double-bounce2 {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #333;
-    opacity: 0.6;
-    position: absolute;
-    top: 0;
-    left: 0;
-    -webkit-animation: sk-bounce 2s infinite ease-in-out;
-    animation: sk-bounce 2s infinite ease-in-out;
-    -webkit-animation-delay: -1s;
-    animation-delay: -1s;
-}
+    .double-bounce2 {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background-color: #333;
+      opacity: 0.6;
+      position: absolute;
+      top: 0;
+      left: 0;
+      -webkit-animation: sk-bounce 2s infinite ease-in-out;
+      animation: sk-bounce 2s infinite ease-in-out;
+      -webkit-animation-delay: -1s;
+      animation-delay: -1s;
+    }
 
-@-webkit-keyframes sk-bounce {
-    0%,
-    100% {
+    @-webkit-keyframes sk-bounce {
+
+      0%,
+      100% {
         -webkit-transform: scale(0);
-    }
-    50% {
-        -webkit-transform: scale(1);
-    }
-}
+      }
 
-@keyframes sk-bounce {
-    0%,
-    100% {
+      50% {
+        -webkit-transform: scale(1);
+      }
+    }
+
+    @keyframes sk-bounce {
+
+      0%,
+      100% {
         transform: scale(0);
         -webkit-transform: scale(0);
-    }
-    50% {
+      }
+
+      50% {
         transform: scale(1);
         -webkit-transform: scale(1);
+      }
     }
-}
 
-/* .template-preloader-rapper {
+    /* .template-preloader-rapper {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -137,33 +141,27 @@
     animation: AnimationName 4s ease infinite;
 } */
 
-.template .spinner {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    margin-left: -20px;
-    margin-top: -20px;
-    height: 50px;
-    width: 50px;
-}
+    .template .spinner {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-left: -20px;
+      margin-top: -20px;
+      height: 50px;
+      width: 50px;
+    }
 
-.template .spinner .double-bounce1 {
-    background: red;
-}
+    .template .spinner .double-bounce1 {
+      background: red;
+    }
 
-.template .spinner .double-bounce2 {
-    background: red;
-}
-
-  
-
-
-
-
+    .template .spinner .double-bounce2 {
+      background: red;
+    }
   </style>
 
-  
-<link rel="stylesheet" type="text/css" href="/css/loader.css">
+
+  <link rel="stylesheet" type="text/css" href="/css/loader.css">
 </head>
 
 
@@ -173,17 +171,18 @@
 
 <body>
 
-  <h1 style="color:#1ab394;" >Not previliged user or In suffiecient data</h1>
+  <h1 style="color:#1ab394;">Not previliged user or In suffiecient data</h1>
   <p style="color:#1ab394;">You must have previliged and atleast one entry to view analytics</p>
 
 
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script>
-  $(window).load(function () {
-                  $(".template").fadeOut(500);
-              });</script>
+  <script>
+    $(window).load(function () {
+      $(".template").fadeOut(500);
+    });
+  </script>
 
 
 </body>

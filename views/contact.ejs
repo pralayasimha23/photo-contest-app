@@ -1,97 +1,99 @@
 <%- include('partials/main_header') %>
 
-    <style>
+<style>
+  .btn.send {
 
-.btn.send {
+    background-color: #1ab394;
+    color: white;
 
-background-color: #1ab394;
-color : white;
-
-}
-
-
-
-    </style>
+  }
+</style>
 
 
 
-      <body>
+<body>
 
 
-        <div class="container">
-    
-        <% if(messages.success) { %>
-          <div class="alert alert-success alert-dismissible fade show">
-             
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <% messages.success.forEach(function(success){ %>
-              <div><%= success.msg %></div>
-           <% }); %>
-          </div>
-          <% } %>
-          
-          <% if(messages.errors) { %>
-          <div class="alert alert-danger alert-dismissible fade show">
-             
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-              <% messages.errors.forEach(function(error){ %>
-              <div><%= error.msg %></div>
-              <% }); %>
-          </div>
-          <% } %>
-          
-          <% if(messages.info) { %>
-          <div class="alert alert-info alert-dismissible fade show">
-              
-              <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <% messages.info.forEach(function(info){ %>
-                <div><%= info.msg %></div>
-                 <% }); %>
-          </div>
-          <% } %>
-   
-     <div class="pb-2 mt-2 mb-4 text-center border-bottom">
-            <h3>Contact Us</h3>
-        </div>
-        <form method="POST">
-          <input type="hidden" name="_csrf" />
+  <div class="container">
 
-    <% if (unknownUser) { %>
-          <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="name">Name</label>
-            <div class="col-md-8"><input class="form-control" type="text" name="name" id="name" autocomplete="name" autofocus="autofocus" required="required" /></div>
-        </div>
-        <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="email">Email</label>
-            <div class="col-md-8"><input class="form-control" type="email" name="email" id="email" autocomplete="email" required="required" /></div>
-        </div>
+    <% if(messages.success) { %>
+    <div class="alert alert-success alert-dismissible fade show">
 
-        <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="message">Please describe the issue or your suggestion</label>
-          <div class="col-md-8"><textarea class="form-control" name="message" id="message" rows="7" autofocus="true" required="required"></textarea></div>
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <% messages.success.forEach(function(success){ %>
+      <div><%= success.msg %></div>
+      <% }); %>
+    </div>
+    <% } %>
+
+    <% if(messages.errors) { %>
+    <div class="alert alert-danger alert-dismissible fade show">
+
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <% messages.errors.forEach(function(error){ %>
+      <div><%= error.msg %></div>
+      <% }); %>
+    </div>
+    <% } %>
+
+    <% if(messages.info) { %>
+    <div class="alert alert-info alert-dismissible fade show">
+
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      <% messages.info.forEach(function(info){ %>
+      <div><%= info.msg %></div>
+      <% }); %>
+    </div>
+    <% } %>
+
+    <div class="pb-2 mt-2 mb-4 text-center border-bottom">
+      <h3>Contact Us</h3>
+    </div>
+    <form method="POST">
+      <input type="hidden" name="_csrf" />
+
+      <% if (unknownUser) { %>
+      <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="name">Name</label>
+        <div class="col-md-8"><input class="form-control" type="text" name="name" id="name" autocomplete="name"
+            autofocus="autofocus" required="required" /></div>
+      </div>
+      <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="email">Email</label>
+        <div class="col-md-8"><input class="form-control" type="email" name="email" id="email" autocomplete="email"
+            required="required" /></div>
+      </div>
+
+      <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="message">Please describe
+          the issue or your suggestion</label>
+        <div class="col-md-8"><textarea class="form-control" name="message" id="message" rows="7" autofocus="true"
+            required="required"></textarea></div>
       </div>
       <div class="form-group">
-          <div class="offset-md-2 col-md-8 p-1">
-              <div class="g-recaptcha" data-sitekey= <%=sitekey%>></div><br />
-              <button class="btn btn-primary" type="submit"><i class="far fa-envelope fa-sm"></i>Send</button>
-          </div>
+        <div class="offset-md-2 col-md-8 p-1">
+          <div class="g-recaptcha" data-sitekey=<%=sitekey%>></div><br />
+          <button class="btn btn-primary" type="submit"><i class="far fa-envelope fa-sm"></i>Send</button>
+        </div>
 
-          
+
 
         <%  }else{  %>
 
-                <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="message">Please describe the issue or your suggestion</label>
-                  <div class="col-md-8"><textarea class="form-control" name="message" id="message" rows="7" autofocus="true" required="required"></textarea></div>
-              </div>
-              <div class="form-group">
-                  <div class="offset-md-2 col-md-8 p-1">
-                      <div class="g-recaptcha" data-sitekey= <%=sitekey%>></div><br />
-                      <button class="btn btn-primary" type="submit"><i class="far fa-envelope fa-sm"></i>Send</button>
-                  </div>
+        <div class="form-group row"><label class="col-md-2 col-form-label font-weight-bold" for="message">Please
+            describe the issue or your suggestion</label>
+          <div class="col-md-8"><textarea class="form-control" name="message" id="message" rows="7" autofocus="true"
+              required="required"></textarea></div>
+        </div>
+        <div class="form-group">
+          <div class="offset-md-2 col-md-8 p-1">
+            <div class="g-recaptcha" data-sitekey=<%=sitekey%>></div><br />
+            <button class="btn btn-primary" type="submit"><i class="far fa-envelope fa-sm"></i>Send</button>
+          </div>
 
-                  <%  }  %>     
-              
-        </form>
+          <%  }  %>
 
-      </div>
-<!-- 
+    </form>
+
+  </div>
+  <!-- 
 <div class="container">
     <div class=" pb-2 mt-2 mb-4 border-bottom">
       <h3 >Contact Form</h3>
@@ -112,5 +114,5 @@ color : white;
     </form>
   </div> -->
 
-  
+
   <%- include('partials/main_footer') %>

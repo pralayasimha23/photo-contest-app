@@ -1,10 +1,14 @@
-const { promisify } = require('util');
+const {
+  promisify
+} = require('util');
 
 
 const lob = require('lob')(process.env.LOB_KEY);
 
 const axios = require('axios');
-const { google } = require('googleapis');
+const {
+  google
+} = require('googleapis');
 
 const validator = require('validator');
 
@@ -30,7 +34,8 @@ exports.getFileUpload = (req, res) => {
 };
 
 exports.postFileUpload = (req, res) => {
-  req.flash('success', { msg: 'File was uploaded successfully.' });
+  req.flash('success', {
+    msg: 'File was uploaded successfully.'
+  });
   res.redirect('/api/upload');
 };
-

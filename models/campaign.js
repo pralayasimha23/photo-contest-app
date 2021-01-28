@@ -6,51 +6,66 @@ var Schema = mongoose.Schema;
 mongoose.plugin(slug);
 
 var campaignSchema = new Schema({
-    Campname: {type: String},
-    Title: {type: String},
-    Email:  { type: String },
-    Start:{type:Date},
-    End:{type:Date},  
-    Time:{},
-    Description:{},
-    Primarycolor: {
-      type: String,
-      validator: [colorValidator, 'Invalid color'],
-      
-    },
-    Secondarycolor: {
-      type: String,
-      validator: [colorValidator, 'Invalid color'],
-      
-    },
-    FacebookURL:{},
-    TwitterURL:{}, 
-    InstagramURL:{}, 
-    LinkedinURL:{},
-    Logo:  {},
-    Banner: {},
-    TemplateType:{ type: String },
-    userId: { 
-      type: Schema.Types.ObjectId, 
-      ref: 'User', 
-    } ,
-    photoId: [ {
-      type:Schema.Types.ObjectId, 
-      ref:'PhotoEntries'
-    }],
+  Campname: {
+    type: String
+  },
+  Title: {
+    type: String
+  },
+  Email: {
+    type: String
+  },
+  Start: {
+    type: Date
+  },
+  End: {
+    type: Date
+  },
+  Time: {},
+  Description: {},
+  Primarycolor: {
+    type: String,
+    validator: [colorValidator, 'Invalid color'],
 
-    winner: [{
-      type:Schema.Types.ObjectId, 
-      ref:'PhotoEntries'
-    } ],
+  },
+  Secondarycolor: {
+    type: String,
+    validator: [colorValidator, 'Invalid color'],
 
-    slug: { type: String, slug: ["Campname"], unique: true }
+  },
+  FacebookURL: {},
+  TwitterURL: {},
+  InstagramURL: {},
+  LinkedinURL: {},
+  Logo: {},
+  Banner: {},
+  TemplateType: {
+    type: String
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  photoId: [{
+    type: Schema.Types.ObjectId,
+    ref: 'PhotoEntries'
+  }],
 
-  });
+  winner: [{
+    type: Schema.Types.ObjectId,
+    ref: 'PhotoEntries'
+  }],
 
- module.exports = mongoose.model('Campaigns', campaignSchema);
+  slug: {
+    type: String,
+    slug: ["Campname"],
+    unique: true
+  }
+
+});
+
+module.exports = mongoose.model('Campaigns', campaignSchema);
 
 // const Campaign = mongoose.model('campaign ',campaignSchema);
 
 // exports.Campaign = Campaign;
-

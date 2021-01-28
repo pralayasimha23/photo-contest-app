@@ -23,25 +23,35 @@ exports.postEntriesCollection = async (req, res) => {
   const validationErrors = [];
 
   if (!req.user) {
-    if (validator.isEmpty(req.body.name)) validationErrors.push({ msg: 'Please enter your name' });
-    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' });
-    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' });
+    if (validator.isEmpty(req.body.name)) validationErrors.push({
+      msg: 'Please enter your name'
+    });
+    if (!validator.isEmail(req.body.email)) validationErrors.push({
+      msg: 'Please enter a valid email address.'
+    });
+    if (!validator.isEmail(req.body.email)) validationErrors.push({
+      msg: 'Please enter a valid email address.'
+    });
   }
-  if (validator.isEmpty(req.body.description)) validationErrors.push({ msg: 'Please enter your message.' });
+  if (validator.isEmpty(req.body.description)) validationErrors.push({
+    msg: 'Please enter your message.'
+  });
 
 
   function getValidateReCAPTCHA(token) {
-    return axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
-      {},
-      {
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8' },
-      });
+    return axios.post(`https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`, {}, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=utf-8'
+      },
+    });
   }
 
   try {
     const validateReCAPTCHA = await getValidateReCAPTCHA(req.body['g-recaptcha-response']);
     if (!validateReCAPTCHA.data.success) {
-      validationErrors.push({ msg: 'reCAPTCHA validation failed.' });
+      validationErrors.push({
+        msg: 'reCAPTCHA validation failed.'
+      });
     }
 
     if (validationErrors.length) {
@@ -50,120 +60,71 @@ exports.postEntriesCollection = async (req, res) => {
     }
 
 
-  Campaign.findOne({
-    slug: req.params.slug
-  }, function (err, campaign) {
+    Campaign.findOne({
+      slug: req.params.slug
+    }, function (err, campaign) {
 
-    let filename = '';
+      let filename = '';
 
 
 
-    
 
-    if (isEmpty(req.files.file)) {
 
-      validationErrors.push({ msg: 'Please upload file.' });
-      req.flash('errors', validationErrors);  
-      // res.status(200).json({
-      //   'status': 200,
-      //   'msg': 'Error'
-      // })
-      return res.redirect('/contact');
-    }else{
-    
+      if (isEmpty(req.files.file)) {
 
-      let file = req.files.file;
-      filename = file.name;
-      let uploadDir = './public/PhotoContestUploads/uploads/';
-      console.log(filename);
-      file.mv(uploadDir + filename, (err) => {
-        if (err)
-          throw err;
+        validationErrors.push({
+          msg: 'Please upload file.'
+        });
+        req.flash('errors', validationErrors);
+        // res.status(200).json({
+        //   'status': 200,
+        //   'msg': 'Error'
+        // })
+        return res.redirect('/contact');
+      } else {
+
+
+        let file = req.files.file;
+        filename = file.name;
+        let uploadDir = './public/PhotoContestUploads/uploads/';
+        console.log(filename);
+        file.mv(uploadDir + filename, (err) => {
+          if (err)
+            throw err;
+        });
+      }
+
+      const photo = new PhotoEntries({
+
+        Email: req.body.email,
+        Name: req.body.name,
+        Description: req.body.description,
+        Phonenumber: req.body.Phone,
+        CampaignId: campaign._id,
+        done: false,
+        likes_count: 0,
+        LikeorUnlike: false,
+        Photo: `uploads/${filename}`
       });
-    }
+      photo.save().then(photo => {
+        console.log(photo);
 
-    const photo = new PhotoEntries({
+        req.flash('success', {
+          msg: 'Uploaded successfully'
+        });
+        res.status(200).json({
+          'status': 200,
+          'msg': 'Completed'
+        })
+        // return  res.redirect('/photoapp/'+ req.params.slug);
 
-      Email: req.body.email,
-      Name: req.body.name,
-      Description: req.body.description,
-      Phonenumber: req.body.Phone,
-      CampaignId: campaign._id,
-      done: false,
-      likes_count: 0,
-      LikeorUnlike: false,
-      Photo: `uploads/${filename}`
-    });
-    photo.save().then(photo => {
-      console.log(photo);
-
-      req.flash('success', {
-        msg: 'Uploaded successfully'
       });
-      res.status(200).json({
-        'status': 200,
-        'msg': 'Completed'
-      })
-      // return  res.redirect('/photoapp/'+ req.params.slug);
 
     });
-    
-  });
-}catch (err) {
-  console.log(err);
+  } catch (err) {
+    console.log(err);
+  }
 }
-}
-
-
-
-
-// exports.postEntriesCollection = (req, res) => {
-
-//   Campaign.findOne({
-//     slug: req.params.slug
-//   }, function (err, campaign) {
-
-//     let filename = '';
-
-
-//     if (!isEmpty(req.files)) {
-//       let file = req.files.file;
-//       filename = file.name;
-//       let uploadDir = './public/PhotoContestUploads/uploads/';
-//       console.log(filename);
-//       file.mv(uploadDir + filename, (err) => {
-//         if (err)
-//           throw err;
-//       });
-//     }
-
-//     const photo = new PhotoEntries({
-
-//       Email: req.body.email,
-//       Name: req.body.name,
-//       Description: req.body.description,
-//       Phonenumber: req.body.Phone,
-//       CampaignId: campaign._id,
-//       done: false,
-//       likes_count: 0,
-//       LikeorUnlike: false,
-//       Photo: `uploads/${filename}`
-//     });
-//     photo.save().then(photo => {
-//       console.log(photo);
-
-//       req.flash('success', {
-//         msg: 'Uploaded successfully'
-//       });
-//       res.status(200).json({
-//         'status': 200,
-//         'msg': 'Completed'
-//       })
-//       // return  res.redirect('/photoapp/'+ req.params.slug);
-
-//     });
-//   });
-// }
 
 
 

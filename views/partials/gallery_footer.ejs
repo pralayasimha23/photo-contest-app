@@ -8,7 +8,7 @@
   </div> -->
 
 
- 
+
 
 <footer>
 
@@ -26,7 +26,9 @@
 </footer>
 <!-- Footer Area Section End Here -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+</script>
 <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script> -->
 <script src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e4f8547ccb7a3b6"></script>
 <!-- <script src="/inspia/js/plugins/slimscroll/jquery.slimscroll.min.js"></script> -->
@@ -70,58 +72,56 @@
 <script src="/gallery_js/waves.js"></script>
 
 
-    <!-- imagesloaded.pkgd.min js -->
-    <script src="/gallery_js/imagesloaded.pkgd.min.js"></script>
+<!-- imagesloaded.pkgd.min js -->
+<script src="/gallery_js/imagesloaded.pkgd.min.js"></script>
 
-    <!-- TimeCircles js -->
-    <script src="/gallery_js/TimeCircles.js"></script>
+<!-- TimeCircles js -->
+<script src="/gallery_js/TimeCircles.js"></script>
 
-    <!-- main js -->
+<!-- main js -->
 <script src="/gallery_js/main.js"></script>
 
 
-   <!-- Sweet alert -->
-   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.1/dist/sweetalert2.all.js"></script>
+<!-- Sweet alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8.17.1/dist/sweetalert2.all.js"></script>
 
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <!-- jQuery Multistep form -->
 <script src="/gallery_js/multi_step_form.js"></script>
 
-   
-    <script>
+
+<script>
+    $(window).load(function () {
+        $(".template-preloader-rapper").fadeOut(500);
+    });
 
 
-$(window).load(function () {
-                $(".template-preloader-rapper").fadeOut(500);
-            });
-    
+    $(document).ready(function () {
 
-$(document).ready(function() {
-
-$('.swalalert').click(function() {
-                swal({
-                        title: "Are you sure?",
-                        text: "Your will not be able to recover this imaginary file!",
-                        type: "warning",
-                        showCancelButton: true,
-                        confirmButtonColor: "#DD6B55",
-                        confirmButtonText: "Yes, delete it!",
-                        cancelButtonText: "No, cancel plx!",
-                        closeOnConfirm: false,
-                        closeOnCancel: false
-                    },
-                    function(isConfirm) {
-                        if (isConfirm) {
-                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
-                        } else {
-                            swal("Cancelled", "Your imaginary file is safe :)", "error");
-                        }
-                    });
-            });
+        $('.swalalert').click(function () {
+            swal({
+                    title: "Are you sure?",
+                    text: "Your will not be able to recover this imaginary file!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel plx!",
+                    closeOnConfirm: false,
+                    closeOnCancel: false
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                    } else {
+                        swal("Cancelled", "Your imaginary file is safe :)", "error");
+                    }
+                });
+        });
 
 
-          });
+    });
 
     $('#exampleModal').on('show.bs.modal', function (event) {
         var button = $(event.relatedTarget) // Button that triggered the modal
@@ -131,10 +131,10 @@ $('.swalalert').click(function() {
         var modal = $(this)
         modal.find('.modal-title').text('New message to ' + recipient)
         modal.find('.modal-body input').val(recipient)
-      })
+    })
 
 
-      $(document).on('click', '.mark-complete-btn', function () {
+    $(document).on('click', '.mark-complete-btn', function () {
         Swal.fire({
             title: 'Are you sure?',
             text: "You want to like this photo, Action Can't be revert",
@@ -343,50 +343,46 @@ $('.swalalert').click(function() {
 
 
 
-//landingpage 
+    //landingpage 
 
 
-$(document).ready(function () {
-
-
- 
- $("#fileUploadForm").submit(function (event) {
-    event.preventDefault();
-
-
-     var form = $('#fileUploadForm')[0];
-
-     var data = new FormData(form);
-     $.ajax({
-         type: "POST",
-         enctype: 'multipart/form-data',
-         url: "/photoapp/<%=campaign.slug%> ",
-         data: data,
-         processData: false, 
-         contentType: false,
-         cache: false,
-       
-         success: function (result) {
-          console.log(result);
-  if(result.msg=='Completed'){
-
-      $("#successmsg").html(" Thanks for your submitting Photo.")
-      $(".status").html(" Success.")
-       
-        }
-         }
-        
-     });
-
-
- });
-
-});
+    $(document).ready(function () {
 
 
 
+        $("#fileUploadForm").submit(function (event) {
+            event.preventDefault();
 
-    </script>
+
+            var form = $('#fileUploadForm')[0];
+
+            var data = new FormData(form);
+            $.ajax({
+                type: "POST",
+                enctype: 'multipart/form-data',
+                url: "/photoapp/<%=campaign.slug%> ",
+                data: data,
+                processData: false,
+                contentType: false,
+                cache: false,
+
+                success: function (result) {
+                    console.log(result);
+                    if (result.msg == 'Completed') {
+
+                        $("#successmsg").html(" Thanks for your submitting Photo.")
+                        $(".status").html(" Success.")
+
+                    }
+                }
+
+            });
+
+
+        });
+
+    });
+</script>
 </body>
 
 </html>

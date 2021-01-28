@@ -1,281 +1,283 @@
-
 <%-include('../partials/main_header');-%>
 
 
 
 <div class="container">
-    <div class="row profile">
-		<div class="col-md-3">
-			<div class="profile-sidebar">
-				<!-- SIDEBAR USERPIC -->
-				<div class="profile-userpic">
-                    <div class="d-flex justify-content-center align-items-center rounded"
-                    style="height: 140px; background-color: rgb(233, 236, 239);">
-                    <!-- <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span> -->
+  <div class="row profile">
+    <div class="col-md-3">
+      <div class="profile-sidebar">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic">
+          <div class="d-flex justify-content-center align-items-center rounded"
+            style="height: 140px; background-color: rgb(233, 236, 239);">
+            <!-- <span style="color: rgb(166, 168, 170); font: bold 8pt Arial;">140x140</span> -->
 
-                    <%  if (!user.profile.picture){ %>
-                               
-                      <img src="https://i.ibb.co/prtxJQr/Untitled-2.png" style="width:140px; height:140px" alt="">
+            <%  if (!user.profile.picture){ %>
 
-
-                      <% }else{  %>
-
-                      <img alt="image" class="rounded" src="<%=user.profile.picture%> "/>
+            <img src="https://i.ibb.co/prtxJQr/Untitled-2.png" style="width:140px; height:140px" alt="">
 
 
-                      <% } %>
+            <% }else{  %>
 
-                  
-                  </div>
-				</div>
-				<!-- END SIDEBAR USERPIC -->
-				<!-- SIDEBAR USER TITLE -->
-				<div class="profile-usertitle">
-					<div class="profile-usertitle-name">
-           <% if(!user.name == ''){ %>
-                  <%=user.name %>
-             <%  }else{ %>
+            <img alt="image" class="rounded" src="<%=user.profile.picture%> " />
+
+
+            <% } %>
+
+
+          </div>
+        </div>
+        <!-- END SIDEBAR USERPIC -->
+        <!-- SIDEBAR USER TITLE -->
+        <div class="profile-usertitle">
+          <div class="profile-usertitle-name">
+            <% if(!user.name == ''){ %>
+            <%=user.name %>
+            <%  }else{ %>
             <%= user.email.substring(0, user.email.lastIndexOf("@"));%>
-          <%  } %>
-					</div>
-				
-				</div>
-				<!-- END SIDEBAR USER TITLE -->
-				<!-- SIDEBAR BUTTONS -->
-				<div class="profile-userbuttons">
-					<div class="mt-2">
-                        <button class="btn btn-primary" type="button">
-                          <i class="fa fa-fw fa-camera"></i>
-                          <span>Change Photo</span>
-                        </button>
-                      </div>
+            <%  } %>
+          </div>
+
+        </div>
+        <!-- END SIDEBAR USER TITLE -->
+        <!-- SIDEBAR BUTTONS -->
+        <div class="profile-userbuttons">
+          <div class="mt-2">
+            <button class="btn btn-primary" type="button">
+              <i class="fa fa-fw fa-camera"></i>
+              <span>Change Photo</span>
+            </button>
+          </div>
+        </div>
+
+
+
+
+
+
+        <!-- END SIDEBAR BUTTONS -->
+        <!-- SIDEBAR MENU -->
+        <div class="profile-usermenu">
+          <ul class="nav">
+            <li class="active">
+              <a href="/account">
+                <i class="glyphicon gglyphicon-user"></i>
+                Profile </a>
+            </li>
+            <li>
+              <a href="#" target="_blank">
+                <i class="glyphicon  glyphicon-home"></i>
+                Home </a>
+            </li>
+            <li>
+              <a href="/dashboard">
+                <i class="glyphicon glyphicon-user"></i>
+                My dashboard </a>
+            </li>
+            <!-- <li>
+              <a href="#" target="_blank">
+                <i class="glyphicon glyphicon-ok"></i>
+                Tasks </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="glyphicon glyphicon-flag"></i>
+                Help </a>
+            </li> -->
+          </ul>
+        </div>
+        <!-- END MENU -->
+
+        <div style="min-height: 300px;" class="profile-content side">
+          <div class=" h-25 pb-1 mt-2 mb-1 ">
+
+            <form action="/account/delete" method='POST'
+              onsubmit="return confirm('Are you sure you want to delete your account?');">
+              <input type="hidden" name="_csrf" ,value="">
+              <div class="form-group">
+                <h4>Delete Account</h4>
+                <p>You can delete your account, but keep in mind this action is irreversible.</p>
+                <input type="hidden" name='_csrf' value=_csrf>
+                <div>
+                  <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt fa-sm"></i> Delete
+                    my account</button>
                 </div>
-                
+              </div>
+            </form>
+
+          </div>
+
+        </div>
 
 
 
+      </div>
+    </div>
+    <div class="col-md-9">
+      <% if(messages.success) { %>
+      <div class="alert alert-success alert-dismissible fade show">
+
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% messages.success.forEach(function(success){ %>
+        <div><%= success.msg %></div>
+        <% }); %>
+      </div>
+      <% } %>
+
+      <% if(messages.errors) { %>
+      <div class="alert alert-danger alert-dismissible fade show">
+
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% messages.errors.forEach(function(error){ %>
+        <div><%= error.msg %></div>
+        <% }); %>
+      </div>
+      <% } %>
+
+      <% if(messages.info) { %>
+      <div class="alert alert-info alert-dismissible fade show">
+
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <% messages.info.forEach(function(info){ %>
+        <div><%= info.msg %></div>
+        <% }); %>
+      </div>
+      <% } %>
+      <div class="profile-content">
+        <form action='/account/profile' , method="POST">
+          <!-- <input type="hidden" name="_csrf" , value=""> -->
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Email</label>
+            <div class="col-md-7">
+              <input class="form-control" type="email" value="<%=user.email%>" name="email" id="email" autofocus
+                autocomplete="email" required>
+            </div>
+            <div class=" offset-sm-3 col-md-7 pl-3">
+              <%if(user.emailVerified){%>
+              <div class="text-success font-italic">Verified </div>
+              <%}else{%>
+              <div class="text-danger font-italic"> unverified </div>
+              <a href="/account/verify"> Send verification email </a>
+              <% }%>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">name</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="name" id="name" value="<%=user.profile.name%>" autofocus
+                autocomplete="name" required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Gender</label>
+            <div class="col-md-1">
+              <div class="form-check form-check-inline">
+
+                <input class="form-check-input" type="radio" checked="<%=user.profile.gender='male'%>" name="gender"
+                  id="male" value='male' data-toggle='radio'>
+
+                <label class="form-check-label">Male</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+
+                <input class="form-check-input" type="radio" checked="<%=user.profile.gender='female'%>" name="gender"
+                  id="female" value='female' data-toggle='radio'>
+
+                <label class="form-check-label">Female</label>
+              </div>
+
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" checked="<%=user.profile.gender='other'%>" name="gender"
+                  id="other" value='other' data-toggle='radio'>
+
+                <label class="form-check-label">Other</label>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="location">Location</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="location" id='location' value="<%=user.profile.location%>"
+                autofocus required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="website">Website</label>
+            <div class="col-md-7">
+              <input class="form-control" type="text" name="website" id='website' value="<%=user.profile.website%>"
+                autofocus required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right">Gravatar</label>
+            <div class="col-sm-4">
+
+              <%  if (!user.profile.picture){ %>
+
+              <img src="https://i.ibb.co/prtxJQr/Untitled-2.png" style="width:100px; height:50px;" alt="">
 
 
-				<!-- END SIDEBAR BUTTONS -->
-				<!-- SIDEBAR MENU -->
-				<div class="profile-usermenu">
-					<ul class="nav">
-						<li class="active">
-							<a href="/account">
-							<i class="glyphicon glyphicon-home"></i>
-							Profile </a>
-						</li>
-						<li>
-							<a href="/dashboard">
-							<i class="glyphicon glyphicon-user"></i>
-							My dashboard </a>
-						</li>
-						<li>
-							<a href="#" target="_blank">
-							<i class="glyphicon glyphicon-ok"></i>
-							Tasks </a>
-						</li>
-						<li>
-							<a href="#">
-							<i class="glyphicon glyphicon-flag"></i>
-							Help </a>
-						</li>
-					</ul>
-				</div>
-                <!-- END MENU -->
-                
-                <div style="min-height: 300px;" class="profile-content side">
-                    <div class=" h-25 pb-1 mt-2 mb-1 ">
-    
-                        <form action="/account/delete" method='POST'
-                          onsubmit="return confirm('Are you sure you want to delete your account?');">
-                          <input type="hidden" name="_csrf" ,value="">
-                          <div class="form-group">
-                            <h4>Delete Account</h4>
-                            <p>You can delete your account, but keep in mind this action is irreversible.</p>
-                            <input type="hidden" name='_csrf' value=_csrf>
-                            <div>
-                              <button class="btn btn-danger" type="submit"><i class="fas fa-trash-alt fa-sm"></i> Delete
-                                my account</button>
-                            </div>
-                          </div>
-                        </form>
-    
-                      </div>
-    
-                </div>
+              <% }else{  %>
+
+              <img alt="image" class="rounded" src="<%=user.profile.picture%> " />
 
 
-
-			</div>
-		</div>
-		<div class="col-md-9">
-            <% if(messages.success) { %>
-                <div class="alert alert-success alert-dismissible fade show">
-              
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <% messages.success.forEach(function(success){ %>
-                  <div><%= success.msg %></div>
-                  <% }); %>
-                </div>
-                <% } %>
-              
-                <% if(messages.errors) { %>
-                <div class="alert alert-danger alert-dismissible fade show">
-              
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <% messages.errors.forEach(function(error){ %>
-                  <div><%= error.msg %></div>
-                  <% }); %>
-                </div>
-                <% } %>
-              
-                <% if(messages.info) { %>
-                <div class="alert alert-info alert-dismissible fade show">
-              
-                  <button type="button" class="close" data-dismiss="alert">&times;</button>
-                  <% messages.info.forEach(function(info){ %>
-                  <div><%= info.msg %></div>
-                  <% }); %>
-                </div>
-                <% } %>
-            <div class="profile-content">
-                <form action='/account/profile' , method="POST">
-                    <!-- <input type="hidden" name="_csrf" , value=""> -->
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Email</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="email" value="<%=user.email%>" name="email" id="email"
-                          autofocus autocomplete="email" required>
-                      </div>
-                      <div class=" offset-sm-3 col-md-7 pl-3">
-                        <%if(user.emailVerified){%>
-                        <div class="text-success font-italic">Verified </div>
-                        <%}else{%>
-                        <div class="text-danger font-italic"> unverified </div>
-                        <a href="/account/verify"> Send verification email </a>
-                        <% }%>
-                      </div>
-                    </div>
-
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">name</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="text" name="name" id="name" value="<%=user.profile.name%>"
-                          autofocus autocomplete="name" required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">Gender</label>
-                      <div class="col-md-1">
-                        <div class="form-check form-check-inline">
-
-                          <input class="form-check-input" type="radio" checked="<%=user.profile.gender='male'%>"
-                            name="gender" id="male" value='male' data-toggle='radio'>
-
-                          <label class="form-check-label">Male</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-
-                          <input class="form-check-input" type="radio" checked="<%=user.profile.gender='female'%>"
-                            name="gender" id="female" value='female' data-toggle='radio'>
-
-                          <label class="form-check-label">Female</label>
-                        </div>
-
-                        <div class="form-check form-check-inline">
-                          <input class="form-check-input" type="radio" checked="<%=user.profile.gender='other'%>"
-                            name="gender" id="other" value='other' data-toggle='radio'>
-
-                          <label class="form-check-label">Other</label>
-                        </div>
-                      </div>
-
-                    </div>
-
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right"
-                        for="location">Location</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="text" name="location" id='location'
-                          value="<%=user.profile.location%>" autofocus required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right" for="website">Website</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="text" name="website" id='website'
-                          value="<%=user.profile.website%>" autofocus required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right">Gravatar</label>
-                      <div class="col-sm-4">
-
-                        <%  if (!user.profile.picture){ %>
-                               
-                          <img src="https://i.ibb.co/prtxJQr/Untitled-2.png" style="width:100px; height:50px;" alt="">
-    
-    
-                          <% }else{  %>
-    
-                          <img alt="image" class="rounded" src="<%=user.profile.picture%> "/>
-    
-    
-                          <% } %>
-    
-                      
-
-                      </div>
-                    </div>
-                    <div class="form-group ">
-                      <div class="offset-sm-3 col-md-7 pl-2" for="email">
-
-                        <button class="btn btn btn-info" type="submit"> <i
-                            class="fas fa-pencil-alt fa-sm"></i>Update
-                          Profile</button>
-                      </div>
-                    </div>
-                  </form>
-
-
-                  <form action='/account/password'  method="POST">
-
-                    <input type="hidden" name="_csrf" value="">
-                    
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right" for="password">New
-                        Password</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="password" name="password" id="password" autofocus
-                          autocomplete="new-password" minlength='8' required>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                      <label class="col-md-3 col-form-label font-weight-bold text-right" for="confirmPassword">Confirm
-                        Password</label>
-                      <div class="col-md-7">
-                        <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
-                          autofocus autocomplete="new-password" minlength='8' required>
-                      </div>
-                    </div>
-                    <div class="form-group ">
-                      <div class="offset-sm-3 col-md-7 pl-2 ">
-                        <button class="btn btn-info" type="submit"><i class="fas fa-lock fa-sm"></i>Change Password
-                        </button>
-                  </form>
-
-
+              <% } %>
 
 
 
             </div>
-		</div>
-    </div>
-    
+          </div>
+          <div class="form-group ">
+            <div class="offset-sm-3 col-md-7 pl-2" for="email">
 
-    
+              <button class="btn btn btn-info" type="submit"> <i class="fas fa-pencil-alt fa-sm"></i>Update
+                Profile</button>
+            </div>
+          </div>
+        </form>
+
+
+        <form action='/account/password' method="POST">
+
+          <input type="hidden" name="_csrf" value="">
+
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="password">New
+              Password</label>
+            <div class="col-md-7">
+              <input class="form-control" type="password" name="password" id="password" autofocus
+                autocomplete="new-password" minlength='8' required>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-md-3 col-form-label font-weight-bold text-right" for="confirmPassword">Confirm
+              Password</label>
+            <div class="col-md-7">
+              <input class="form-control" type="password" name="confirmPassword" id="confirmPassword" autofocus
+                autocomplete="new-password" minlength='8' required>
+            </div>
+          </div>
+          <div class="form-group ">
+            <div class="offset-sm-3 col-md-7 pl-2 ">
+              <button class="btn btn-info" type="submit"><i class="fas fa-lock fa-sm"></i>Change Password
+              </button>
+        </form>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+
+
+
 
 
 

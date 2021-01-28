@@ -1,203 +1,213 @@
 <%-include('../partials/landingpage_header');-%>
 
 <style>
-.contactMe  .file-upload-input{
-    height: 100% !important;
-}
-.error {
-    
-    color: #FF0000;
-    padding-top:1px;
-}
-.contactMe>section{
-    background: #f3f3f4;
-}
+    .contactMe .file-upload-input {
+        height: 100% !important;
+    }
 
+    .error {
+
+        color: #FF0000;
+        padding-top: 1px;
+    }
+
+    .contactMe>section {
+        background: #f3f3f4;
+    }
 </style>
 
 
 
-    <section class="jonny">
-      
-        <div class="infos">
-            <!-- BACKGROUND IMAGE -->
-            <!-- To enable the background image, follow these steps: -->
-            <!-- - Comment the background video line -->
-            <!-- - Uncomment the next lines -->
-            <img src="/campaign/<%=campaign.Banner%>" alt="Cover">
+<section class="jonny">
 
-            <!-- BACKGROUND VIDEO -->
-            <!-- To enable the background video, follow these steps: -->
-            <!-- - Set a background image to use for mobile devices (this is necessary because the video autoplay is blocked from android and ios devices to avoid consuming a lot of data) -->
-            <!-- - Uncomment the next lines -->
-            <!-- - Set the "data-width" and "data-height" with the width and height of the video. (use the values given by youtube in the share section. Note: 560 and 315 are the most used values) -->
-            <!-- - Replace "YOUR_VIDEO_ID" with the id of the youtube video (2 times) -->
-            <!--
+    <div class="infos">
+        <!-- BACKGROUND IMAGE -->
+        <!-- To enable the background image, follow these steps: -->
+        <!-- - Comment the background video line -->
+        <!-- - Uncomment the next lines -->
+        <img src="/campaign/<%=campaign.Banner%>" alt="Cover">
+
+        <!-- BACKGROUND VIDEO -->
+        <!-- To enable the background video, follow these steps: -->
+        <!-- - Set a background image to use for mobile devices (this is necessary because the video autoplay is blocked from android and ios devices to avoid consuming a lot of data) -->
+        <!-- - Uncomment the next lines -->
+        <!-- - Set the "data-width" and "data-height" with the width and height of the video. (use the values given by youtube in the share section. Note: 560 and 315 are the most used values) -->
+        <!-- - Replace "YOUR_VIDEO_ID" with the id of the youtube video (2 times) -->
+        <!--
 				<div class="videoCover" data-width="560" data-height="315">
 					<iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&amp;autoplay=1&amp;loop=1&amp;controls=0&amp;showinfo=0&amp;mute=1&amp;playlist=YOUR_VIDEO_ID" frameborder="0"></iframe>
 				</div>
 				-->
-            <div class="contain">
-                <div>
-                    <div  >
-                        <img   style="max-height:150px;" src="/logos/<%=campaign.Logo%>" class="logo img-circle" alt="Logo">
-                        <h1 class="title">Hurry Up!<br/>Contest will end in</h1>
-                        <!-- <p class="description"></p> -->
-                        <!-- Set the data-countdown value with this format: yyyy/mm/dd hh:ii:ss -->
-                        <!-- Note: set the time in 0-24 format, two digits for each: hours, minutes and seconds -->
-                        <!-- To enable the countdown, uncomment the import .js line and the next line: -->
-                        
-                    
-                        <input type="hidden" id="timecount1" name="custId" value="<%=campaign.End.toISOString();%> ">
-                            <div class="countdown" data-countdown="<%=campaign.End.toISOString().slice(0,10);%>" >
-                            <div class="days"> 
-                                <div>&nbsp;</div>
-                                <span>days</span>
-                            </div>
-                            <div class="hours"> 
-                                <div>&nbsp;</div>
-                                <span>hours</span>
-                            </div>
-                            <div class="minutes">
-                                <div>&nbsp;</div>
-                                <span>minutes</span>
-                            </div>
-                            <div class="seconds">
-                                <div>&nbsp;</div>
-                                <span>seconds</span>
-                            </div>
-                        </div>
-                        </div>
-                        <!-- BUTTONS SECTION -->
-                        <div class=" sticky buttons centered">
-                            <a class="icon icon-share blue-ocean share-btn">Share</a>
-                            <a href="#" class="icon icon-user dark-green" data-toggle="modal" data-target="#popup1">Terms And Conditions</a>
-                            <a href="/photoapp/<%=campaign.slug %>/gallery/1 " class="icon icon-pic red ">View Others Entries</a>
-                        </div>
-                        <!-- <a href="https://www.google.it/maps/place/21+Jackson,+Irvine,+CA+92620,+Stati+Uniti/@33.7086154,-117.7863857,14z/data=!4m5!3m4!1s0x80dcdcec4f7e4d73:0x492ea9ce607ca568!8m2!3d33.708611!4d-117.7688709" target="_blank" class="address">21 Jackson BLVD 120<br />LOS ANGELES</a> -->
-                        <div class="social">
-                            <!-- <a href="" class="facebook" target="_blank"></a> -->
-                            <!-- <a href="https://www.messenger.com" class="messenger" target="_blank"></a> -->
-                            <!-- <a href="https://www.whatsapp.com" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a> -->
-                            <!-- <a href="" class="instagram" target="_blank"></a>
-                            <a href="" class="twitter" target="_blank"></a> -->
-                            <!-- <a href="https://www.youtube.com" class="youtube" target="_blank"></a> -->
-                            <!-- <a href="https://www.snapchat.com" class="snapchat" target="_blank"></a> -->
-                            <!-- <a href="https://www.spotify.com" class="spotify" target="_blank"></a> -->
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form">
+        <div class="contain">
             <div>
                 <div>
-                <h3><br /> <span >Submit Your Photo</span></h3>
+                    <img style="max-height:150px;" src="/logos/<%=campaign.Logo%>" class="logo img-circle" alt="Logo">
+                    <h1 class="title">Hurry Up!<br />Contest will end in</h1>
+                    <!-- <p class="description"></p> -->
+                    <!-- Set the data-countdown value with this format: yyyy/mm/dd hh:ii:ss -->
+                    <!-- Note: set the time in 0-24 format, two digits for each: hours, minutes and seconds -->
+                    <!-- To enable the countdown, uncomment the import .js line and the next line: -->
 
 
-              
-                    <!-- START - Contact Form -->
-                    <form class="form contactMe small"   enctype="multipart/form-data" id="fileUploadForm">
-                        <% if(messages.success) { %>
-                            <div class="alert alert-success alert-dismissible fade show">
-                               
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <% messages.success.forEach(function(success){ %>
-                                <div><%= success.msg %></div>
-                             <% }); %>
-                            </div>
-                            <% } %>
-                            
-                            <% if(messages.errors) { %>
-                            <div class="alert alert-danger alert-dismissible fade show">
-                               
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                <% messages.errors.forEach(function(error){ %>
-                                <div><%= error.msg %></div>
-                                <% }); %>
-                            </div>
-                            <% } %>
-                            
-                            <% if(messages.info) { %>
-                            <div class="alert alert-info alert-dismissible fade show">
-                                
-                                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                                  <% messages.info.forEach(function(info){ %>
-                                  <div><%= info.msg %></div>
-                                   <% }); %>
-                            </div>
-                            <% } %>
-                       
-                        <section>
-                            <div class="form-row">
-                                <!-- <div class="name">Your name</div> -->
-                                <input type="text"  id="validationDefault01" name="name" data-displayname="Name" class="field" placeholder="Your name" required>
-                            </div>
-                            <div class="form-row">
-                                <!-- <div class="title">Your e-mail</div> -->
-                                <input type="email" id="email" name="email" data-displayname="Email" class="field" placeholder="Your e-mail" required>
-                            </div>
-                            <div class="form-row">
-                                <!-- <div class="">Your phone number</div> -->
-                                <input id="phone"  type="tel" name="phone" data-displayname="Phone" class="field" placeholder="Your phone number" required >
-                            </div>
-
-
-                            <div class="form-row">
-                             
-                            <div class="file-upload">
-                                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
-                              
-                                <div class="image-upload-wrap">
-                                  <input class="file-upload-input"  name="file" type='file' onchange="readURL(this);" accept="image/*" required />
-                                  <div class="drag-text">
-                                    <h3>Drag and drop a file or select add Image</h3>
-                                  </div>
-                                </div>
-                                <div class="file-upload-content">
-                                  <img class="file-upload-image" src="#" alt="your image"  required />
-                                  <div class="image-title-wrap">
-                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="form-row">
-                                <!-- <div class="title">Description</div> -->
-                                <textarea name="description" data-displayname="Message" class="field" placeholder="Description" minlength="20" required></textarea>
-                              
-                            </div>
-
-                            <!-- Google reCAPTCHA -->
-                            <!-- Create a site key for your website: https://www.google.com/recaptcha -->
-                            <!-- Replace YOUR_SITE_KEY_HERE with your site key -->
-                            <!-- To enable Google reCAPTCHA V2, uncomment the next line -->
-                            <!-- <div class="re-captcha" data-sitekey=""></div> -->
-                            <!-- To enable Google Invisible reCAPTCHA, uncomment the next line -->
-                            <!-- <div class="re-captcha invisible" data-sitekey="YOUR_SITE_KEY_HERE"></div> -->
-                            <!-- <div class="form-row offset-md-2 col-md-8 p-1"> -->
-                                <div class="re-captcha g-recaptcha" data-sitekey= <%=sitekey%>></div>
-
-                            <div class="form-row msgsubmit"></div>
-                            <!-- <button class="btn" type="submit" data-sending="Sending...">Send a free request</button> -->
-                            <button  id="contactMesubmit"  class="form-row btn btn-sm btn-info " type="submit" >submit</button>
-                       
-                        </section>
-                    </form>
-                    <!-- END - Contact Form -->
+                    <input type="hidden" id="timecount1" name="custId" value="<%=campaign.End.toISOString();%> ">
+                    <div class="countdown" data-countdown="<%=campaign.End.toISOString().slice(0,10);%>">
+                        <div class="days">
+                            <div>&nbsp;</div>
+                            <span>days</span>
+                        </div>
+                        <div class="hours">
+                            <div>&nbsp;</div>
+                            <span>hours</span>
+                        </div>
+                        <div class="minutes">
+                            <div>&nbsp;</div>
+                            <span>minutes</span>
+                        </div>
+                        <div class="seconds">
+                            <div>&nbsp;</div>
+                            <span>seconds</span>
+                        </div>
+                    </div>
                 </div>
+                <!-- BUTTONS SECTION -->
+                <div class=" sticky buttons centered">
+                    <a class="icon icon-share blue-ocean share-btn">Share</a>
+                    <a href="#" class="icon icon-user dark-green" data-toggle="modal" data-target="#popup1">Terms And
+                        Conditions</a>
+                    <a href="/photoapp/<%=campaign.slug %>/gallery/1 " class="icon icon-pic red ">View Others
+                        Entries</a>
+                </div>
+                <!-- <a href="https://www.google.it/maps/place/21+Jackson,+Irvine,+CA+92620,+Stati+Uniti/@33.7086154,-117.7863857,14z/data=!4m5!3m4!1s0x80dcdcec4f7e4d73:0x492ea9ce607ca568!8m2!3d33.708611!4d-117.7688709" target="_blank" class="address">21 Jackson BLVD 120<br />LOS ANGELES</a> -->
+                <div class="social">
+                    <!-- <a href="" class="facebook" target="_blank"></a> -->
+                    <!-- <a href="https://www.messenger.com" class="messenger" target="_blank"></a> -->
+                    <!-- <a href="https://www.whatsapp.com" class="linkedin" target="_blank"><i class="fa fa-linkedin"></i></a> -->
+                    <!-- <a href="" class="instagram" target="_blank"></a>
+                            <a href="" class="twitter" target="_blank"></a> -->
+                    <!-- <a href="https://www.youtube.com" class="youtube" target="_blank"></a> -->
+                    <!-- <a href="https://www.snapchat.com" class="snapchat" target="_blank"></a> -->
+                    <!-- <a href="https://www.spotify.com" class="spotify" target="_blank"></a> -->
+                </div>
+
+
             </div>
         </div>
-    </section>
- 
+    </div>
+    </div>
+    <div class="form">
+        <div>
+            <div>
+                <h3><br /> <span>Submit Your Photo</span></h3>
 
 
-    <!-- START GALLERY IMAGES -->
-    <!-- To enable the gallery plugin, uncomment the next lines -->
-    <!--
+
+                <!-- START - Contact Form -->
+                <form class="form contactMe small" enctype="multipart/form-data" id="fileUploadForm">
+                    <% if(messages.success) { %>
+                    <div class="alert alert-success alert-dismissible fade show">
+
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <% messages.success.forEach(function(success){ %>
+                        <div><%= success.msg %></div>
+                        <% }); %>
+                    </div>
+                    <% } %>
+
+                    <% if(messages.errors) { %>
+                    <div class="alert alert-danger alert-dismissible fade show">
+
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <% messages.errors.forEach(function(error){ %>
+                        <div><%= error.msg %></div>
+                        <% }); %>
+                    </div>
+                    <% } %>
+
+                    <% if(messages.info) { %>
+                    <div class="alert alert-info alert-dismissible fade show">
+
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <% messages.info.forEach(function(info){ %>
+                        <div><%= info.msg %></div>
+                        <% }); %>
+                    </div>
+                    <% } %>
+
+                    <section>
+                        <div class="form-row">
+                            <!-- <div class="name">Your name</div> -->
+                            <input type="text" id="validationDefault01" name="name" data-displayname="Name"
+                                class="field" placeholder="Your name" required>
+                        </div>
+                        <div class="form-row">
+                            <!-- <div class="title">Your e-mail</div> -->
+                            <input type="email" id="email" name="email" data-displayname="Email" class="field"
+                                placeholder="Your e-mail" required>
+                        </div>
+                        <div class="form-row">
+                            <!-- <div class="">Your phone number</div> -->
+                            <input id="phone" type="tel" name="phone" data-displayname="Phone" class="field"
+                                placeholder="Your phone number" required>
+                        </div>
+
+
+                        <div class="form-row">
+
+                            <div class="file-upload">
+                                <button class="file-upload-btn" type="button"
+                                    onclick="$('.file-upload-input').trigger( 'click' )">Add Image</button>
+
+                                <div class="image-upload-wrap">
+                                    <input class="file-upload-input" name="file" type='file' onchange="readURL(this);"
+                                        accept="image/*" required />
+                                    <div class="drag-text">
+                                        <h3>Drag and drop a file or select add Image</h3>
+                                    </div>
+                                </div>
+                                <div class="file-upload-content">
+                                    <img class="file-upload-image" src="#" alt="your image" required />
+                                    <div class="image-title-wrap">
+                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                                class="image-title">Uploaded Image</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <!-- <div class="title">Description</div> -->
+                            <textarea name="description" data-displayname="Message" class="field"
+                                placeholder="Description" minlength="20" required></textarea>
+
+                        </div>
+
+                        <!-- Google reCAPTCHA -->
+                        <!-- Create a site key for your website: https://www.google.com/recaptcha -->
+                        <!-- Replace YOUR_SITE_KEY_HERE with your site key -->
+                        <!-- To enable Google reCAPTCHA V2, uncomment the next line -->
+                        <!-- <div class="re-captcha" data-sitekey=""></div> -->
+                        <!-- To enable Google Invisible reCAPTCHA, uncomment the next line -->
+                        <!-- <div class="re-captcha invisible" data-sitekey="YOUR_SITE_KEY_HERE"></div> -->
+                        <!-- <div class="form-row offset-md-2 col-md-8 p-1"> -->
+                        <div class="re-captcha g-recaptcha" data-sitekey=<%=sitekey%>></div>
+
+                        <div class="form-row msgsubmit"></div>
+                        <!-- <button class="btn" type="submit" data-sending="Sending...">Send a free request</button> -->
+                        <button id="contactMesubmit" class="form-row btn btn-sm btn-info " type="submit">submit</button>
+
+                    </section>
+                </form>
+                <!-- END - Contact Form -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- START GALLERY IMAGES -->
+<!-- To enable the gallery plugin, uncomment the next lines -->
+<!--
 		<section id="gallery1" class="gallery-items">
 			<a href="assets/imgs/gallery/demo-1.jpg"></a>
 			<a href="assets/imgs/gallery/demo-2.jpg"></a>
@@ -205,36 +215,36 @@
 			<a href="assets/imgs/gallery/demo-4.jpg"></a>
 		</section>
 		-->
-    <!-- END GALLERY IMAGES -->
+<!-- END GALLERY IMAGES -->
 
-    <!-- START MODAL POPUP -->
-    <!-- To enable the modal popup, uncomment the next lines -->
-    
-		<section id="popup1" class="modal customModal fade" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<img src="Landingpage/assets/imgs/popup-cover.jpg" class="fit-width" alt="">
-					<h3>Rules & Regulations</h3>
-					<p><%-campaign.Description%></p>
-					
-                    <div class="buttons centered marginTop">
-						<a href="#" class="black" data-dismiss="modal">CLOSE</a>
-					</div>
-				</div>
-			</div>
-        </section>
+<!-- START MODAL POPUP -->
+<!-- To enable the modal popup, uncomment the next lines -->
 
+<section id="popup1" class="modal customModal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <img src="Landingpage/assets/imgs/popup-cover.jpg" class="fit-width" alt="">
+            <h3>Rules & Regulations</h3>
+            <p><%-campaign.Description%></p>
 
+            <div class="buttons centered marginTop">
+                <a href="#" class="black" data-dismiss="modal">CLOSE</a>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 
-     
-
- 
 
 
 
-        
-   
-    
-    <%- include('../partials/landingpage_footer') %>
+
+
+
+
+
+
+
+
+<%- include('../partials/landingpage_footer') %>

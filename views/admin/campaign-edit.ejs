@@ -1,226 +1,67 @@
 <%-include('../partials/admin_header');-%>
 
-            <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-lg-6">
-                    <h2>Basic Form</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="index.html">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a>Forms</a>
-                        </li>
-                        <li class="breadcrumb-item active">
-                            <strong>Basic Form</strong>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-lg-6 mt-5" >
-                    <% if(messages.success) { %>
-                        <div class="alert alert-success alert-dismissible fade show">
-                           
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <% messages.success.forEach(function(success){ %>
-                            <div><%= success.msg %></div>
-                         <% }); %>
-                        </div>
-                        <% } %>
-                        
-                        <% if(messages.errors) { %>
-                        <div class="alert alert-danger alert-dismissible fade show">
-                           
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <% messages.errors.forEach(function(error){ %>
-                            <div><%= error.msg %></div>
-                            <% }); %>
-                        </div>
-                        <% } %>
-                        
-                        <% if(messages.info) { %>
-                        <div class="alert alert-info alert-dismissible fade show">
-                            
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                              <% messages.info.forEach(function(info){ %>
-                              <div><%= info.msg %></div>
-                               <% }); %>
-                        </div>
-                        <% } %>
-                </div>
-            </div>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-6">
+        <h2>Basic Form</h2>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="index.html">Home</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a>Forms</a>
+            </li>
+            <li class="breadcrumb-item active">
+                <strong>Basic Form</strong>
+            </li>
+        </ol>
+    </div>
+    <div class="col-lg-6 mt-5">
+        <% if(messages.success) { %>
+        <div class="alert alert-success alert-dismissible fade show">
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% messages.success.forEach(function(success){ %>
+            <div><%= success.msg %></div>
+            <% }); %>
+        </div>
+        <% } %>
+
+        <% if(messages.errors) { %>
+        <div class="alert alert-danger alert-dismissible fade show">
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% messages.errors.forEach(function(error){ %>
+            <div><%= error.msg %></div>
+            <% }); %>
+        </div>
+        <% } %>
+
+        <% if(messages.info) { %>
+        <div class="alert alert-info alert-dismissible fade show">
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <% messages.info.forEach(function(info){ %>
+            <div><%= info.msg %></div>
+            <% }); %>
+        </div>
+        <% } %>
+    </div>
+</div>
 
 
-    
-        <div class="wrapper wrapper-content animated fadeInRight">
+
+<div class="wrapper wrapper-content animated fadeInRight">
 
 
-            <form  id="form" enctype="multipart/form-data" action="/create-photo-campaign" method="POST">
-            
-            <!-- <input type="hidden" name="_csrf" value=""> -->
-       
-            <div class="row">
+    <form id="form" enctype="multipart/form-data" action="/create-photo-campaign" method="POST">
+
+        <!-- <input type="hidden" name="_csrf" value=""> -->
+
+        <div class="row">
             <div class="col-lg-7">
                 <div class="ibox ">
                     <div class="ibox-title">
                         <h5>Basic form <small>Simple login form example</small></h5>
-                        <div class="ibox-tools">
-                            <a class="collapse-link">
-                                <i class="fa fa-chevron-up"></i>
-                           </a>
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                 <i class="fa fa-wrench"></i>
-                            </a>
-                            <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#" class="dropdown-item">Config option 1</a>
-                                </li>
-                                <li><a href="#" class="dropdown-item">Config option 2</a>
-                                </li>
-                            </ul>
-                            <a class="close-link">
-                                <i class="fa fa-times"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ibox-content">
-                        <div class="row">
-                            <div class="col-sm-12 ">
-                         
-                            <div class="form-group  row"><label class="col-sm-2 col-form-label">Campaign Name</label>
-
-                                <div class="col-sm-10"><input type="text" value="<%= camplist.Campname%>" name="campname" placeholder="Campaign Name" class="form-control"></div>
-                            </div>
-
-                           
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group  row"><label class="col-sm-2 col-form-label">Title </label>
-
-                                <div class="col-sm-10"><input type="text" value="<%=camplist.Title%>" name="title" placeholder="Campaign Title" class="form-control"></div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-
-                            <div class="form-group row"><label class="col-lg-2 col-form-label">Email</label>
-
-                                <div class="col-lg-10"><input type="email" value="<%=camplist.Email%>" name="email" placeholder="Organizer Email" class="form-control"> 
-                                </div>
-                            </div>
-                          
-                        </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                <div class="col-lg-5">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h5>Horizontal form</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#" class="dropdown-item">Config option 1</a>
-                                    </li>
-                                    <li><a href="#" class="dropdown-item">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="ibox-content">
-                            <div class="form-group" id="data_5">
-                                <label class="font-normal">Range select</label>
-                                <div class="input-daterange input-group" id="datepicker">
-                                    <input type="text" class="form-control-sm form-control" name="start" value="<%=camplist.Start%>"/>
-                                    <span class="input-group-addon">to</span>
-                                    <input type="text" class="form-control-sm form-control" name="end" value="<%=camplist.End%>" />
-                                </div>
-                            </div>
-                            <h3>
-                                ClockPicker
-                            </h3>
-                            <div class="input-group clockpicker" data-autoclose="true">
-                                <input type="text" class="form-control" name="time" value="<%=camplist.Time%>" />
-                                <span class="input-group-addon">
-                                    <span class="fa fa-clock-o"></span>
-                                </span>
-                            </div>
-
-                        </div>
-
-                        <div class="ibox-content">
-                                
-                        <select class="form-control"></select>
-
-                    </div> 
-
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-8">
- 
-                            <div class="file-upload">
-                                <div class="custom-file">
-                                    <input name="logo" id="logo" type="file" value="<%=camplist.Logo%>" class="custom-file-input">
-                                    <label for="logo" class="custom-file-label">Upload Your Logo ...</label>
-                                </div> 
-                              
-                                <div class="image-upload-wrap">
-                                  <input class="file-upload-input" value="<%=camplist.Banner%>" name="file" type='file' onchange="readURL(this);" accept="image/*" />
-                                  <div class="drag-text">
-                                    <h3>Upload banner Image</h3>
-                                  </div>
-                                </div>
-                                <div class="file-upload-content">
-                                  <img class="file-upload-image" src="#" alt="your image" />
-                                  <div class="image-title-wrap">
-                                    <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
-                                  </div>
-                                </div>
-                              </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="ibox ">
-                        <div class="ibox-title back-change">
-                            <h5 >Primary Color</small></h5>
-                          
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#" class="dropdown-item">Config option 1</a>
-                                    </li>
-                                    <li><a href="#" class="dropdown-item">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                                </div>
-                            
-                        </div> 
-                        <div class="ibox-content">
-                       <div class="text-center">
-                        <input name ="primarycolor" type="text" id="demo_apidemo"  class="form-control demo1" value="<%=camplist.Primarycolor%>" class="backgroundcolor" />
-
-                         </div>
-                           
-                    </div>
-                </div>
-
-                <div class="ibox ">
-                    <div class="ibox-title back-change">
-                        <h5 >Secondary Color</small></h5>
-                      
                         <div class="ibox-tools">
                             <a class="collapse-link">
                                 <i class="fa fa-chevron-up"></i>
@@ -237,17 +78,186 @@
                             <a class="close-link">
                                 <i class="fa fa-times"></i>
                             </a>
-                            </div>
-                        
-                    </div> 
+                        </div>
+                    </div>
                     <div class="ibox-content">
-                   <div class="text-center">
-                    <input name ="secondarycolor" type="text" id="demo_apidemo"  class="form-control demo1" value="<%=camplist.Primarycolor%>" class="backgroundcolor" />
+                        <div class="row">
+                            <div class="col-sm-12 ">
 
-                     </div>
-                       
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Campaign
+                                        Name</label>
+
+                                    <div class="col-sm-10"><input type="text" value="<%= camplist.Campname%>"
+                                            name="campname" placeholder="Campaign Name" class="form-control"></div>
+                                </div>
+
+
+                                <div class="hr-line-dashed"></div>
+                                <div class="form-group  row"><label class="col-sm-2 col-form-label">Title </label>
+
+                                    <div class="col-sm-10"><input type="text" value="<%=camplist.Title%>" name="title"
+                                            placeholder="Campaign Title" class="form-control"></div>
+                                </div>
+                                <div class="hr-line-dashed"></div>
+
+                                <div class="form-group row"><label class="col-lg-2 col-form-label">Email</label>
+
+                                    <div class="col-lg-10"><input type="email" value="<%=camplist.Email%>" name="email"
+                                            placeholder="Organizer Email" class="form-control">
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <div class="col-lg-5">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Horizontal form</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="form-group" id="data_5">
+                            <label class="font-normal">Range select</label>
+                            <div class="input-daterange input-group" id="datepicker">
+                                <input type="text" class="form-control-sm form-control" name="start"
+                                    value="<%=camplist.Start%>" />
+                                <span class="input-group-addon">to</span>
+                                <input type="text" class="form-control-sm form-control" name="end"
+                                    value="<%=camplist.End%>" />
+                            </div>
+                        </div>
+                        <h3>
+                            ClockPicker
+                        </h3>
+                        <div class="input-group clockpicker" data-autoclose="true">
+                            <input type="text" class="form-control" name="time" value="<%=camplist.Time%>" />
+                            <span class="input-group-addon">
+                                <span class="fa fa-clock-o"></span>
+                            </span>
+                        </div>
+
+                    </div>
+
+                    <div class="ibox-content">
+
+                        <select class="form-control"></select>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="file-upload">
+                    <div class="custom-file">
+                        <input name="logo" id="logo" type="file" value="<%=camplist.Logo%>" class="custom-file-input">
+                        <label for="logo" class="custom-file-label">Upload Your Logo ...</label>
+                    </div>
+
+                    <div class="image-upload-wrap">
+                        <input class="file-upload-input" value="<%=camplist.Banner%>" name="file" type='file'
+                            onchange="readURL(this);" accept="image/*" />
+                        <div class="drag-text">
+                            <h3>Upload banner Image</h3>
+                        </div>
+                    </div>
+                    <div class="file-upload-content">
+                        <img class="file-upload-image" src="#" alt="your image" />
+                        <div class="image-title-wrap">
+                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                    class="image-title">Uploaded Image</span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="ibox ">
+                    <div class="ibox-title back-change">
+                        <h5>Primary Color</small></h5>
+
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="ibox-content">
+                        <div class="text-center">
+                            <input name="primarycolor" type="text" id="demo_apidemo" class="form-control demo1"
+                                value="<%=camplist.Primarycolor%>" class="backgroundcolor" />
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="ibox ">
+                    <div class="ibox-title back-change">
+                        <h5>Secondary Color</small></h5>
+
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+
+                    </div>
+                    <div class="ibox-content">
+                        <div class="text-center">
+                            <input name="secondarycolor" type="text" id="demo_apidemo" class="form-control demo1"
+                                value="<%=camplist.Primarycolor%>" class="backgroundcolor" />
+
+                        </div>
+
+                    </div>
+                </div>
 
 
 
@@ -282,22 +292,26 @@
                             </a>
                         </div>
                     </div>
-                <div class="ibox-content">
-                         <div class="row">
+                    <div class="ibox-content">
+                        <div class="row">
                             <div class="col-sm-6">
                                 <div class="input-group m-b"><span class="input-group-prepend">
-                                    <button type="button" class="btn btn-facebook">Facebook</button> </span> <input name="facebooklink"  value="<%=camplist.FacebookURL%>"   type="text" class="form-control">
+                                        <button type="button" class="btn btn-facebook">Facebook</button> </span> <input
+                                        name="facebooklink" value="<%=camplist.FacebookURL%>" type="text"
+                                        class="form-control">
                                 </div>
-                                
+
                             </div>
 
-                            
-                    <div class="col-sm-6">
 
-                                <div class="input-group"><input type="text" value="<%=camplist.TwitterURL%>" name="twitterlink" class="form-control"> <span class="input-group-append"> <button type="button" class="btn btn-twitter">Twitter
-                                </button> </span></div>
+                            <div class="col-sm-6">
+
+                                <div class="input-group"><input type="text" value="<%=camplist.TwitterURL%>"
+                                        name="twitterlink" class="form-control"> <span class="input-group-append">
+                                        <button type="button" class="btn btn-twitter">Twitter
+                                        </button> </span></div>
                             </div>
-                    </div>
+                        </div>
 
                         <div class="hr-line-dashed"></div>
 
@@ -305,70 +319,74 @@
                             <div class="col-sm-6">
 
                                 <div class="input-group m-b"><span class="input-group-prepend">
-                                    <button type="button" class="btn btn-google">Instagram</button> </span> <input name="instagramlink" type="text" value="<%=camplist.InstagramURL%>" class="form-control">
+                                        <button type="button" class="btn btn-google">Instagram</button> </span> <input
+                                        name="instagramlink" type="text" value="<%=camplist.InstagramURL%>"
+                                        class="form-control">
                                 </div>
                             </div>
 
-                            
+
                             <div class="col-sm-6">
 
-                                <div class="input-group"><input name="linkedinlink" value="<%=camplist.LinkedinURL%>" type="text" class="form-control"> <span class="input-group-append"> <button type="button" class="btn btn-linkedin">LinkedIn
-                                </button> </span></div>
+                                <div class="input-group"><input name="linkedinlink" value="<%=camplist.LinkedinURL%>"
+                                        type="text" class="form-control"> <span class="input-group-append"> <button
+                                            type="button" class="btn btn-linkedin">LinkedIn
+                                        </button> </span></div>
                             </div>
                         </div>
-
-
-                </div>
 
 
                     </div>
+
+
                 </div>
             </div>
+        </div>
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ibox ">
-                        <div class="ibox-title">
-                            <h5>Wyswig Summernote Editor</h5>
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                            <i class="fa fa-chevron-up"></i>
-                        </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-wrench"></i>
-                        </a>
-                                <ul class="dropdown-menu dropdown-user">
-                                    <li><a href="#" class="dropdown-item">Config option 1</a>
-                                    </li>
-                                    <li><a href="#" class="dropdown-item">Config option 2</a>
-                                    </li>
-                                </ul>
-                                <a class="close-link">
-                            <i class="fa fa-times"></i>
-                        </a>
-                            </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>Wyswig Summernote Editor</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#" class="dropdown-item">Config option 1</a>
+                                </li>
+                                <li><a href="#" class="dropdown-item">Config option 2</a>
+                                </li>
+                            </ul>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
                         </div>
-                        <div class="ibox-content no-padding">
-                            
-            <textarea id="summernote" name="editordata" >  </textarea>
-                              
-                            </div>
-
-                        </div>
-                     
                     </div>
+                    <div class="ibox-content no-padding">
+
+                        <textarea id="summernote" name="editordata">  </textarea>
+
+                    </div>
+
                 </div>
+
             </div>
-            <div style="margin-bottom:50px;">
+        </div>
+</div>
+<div style="margin-bottom:50px;">
 
-           <button  style="margin:20px;" type="submit" class="d-flex text-center btn-rounded btn btn-primary">Create Campaign</button> 
-       
-            </div>
-           
+    <button style="margin:20px;" type="submit" class="d-flex text-center btn-rounded btn btn-primary">Create
+        Campaign</button>
 
-        </form>
-   
+</div>
 
-                
-        <%-include('../partials/admin_footer');-%>
 
+</form>
+
+
+
+<%-include('../partials/admin_footer');-%>

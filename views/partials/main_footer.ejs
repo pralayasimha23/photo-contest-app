@@ -1,4 +1,4 @@
-<footer >
+<footer>
     <div class="fixed-bottom footer-bottom-area">
         <div class="container">
             <div class="row">
@@ -59,41 +59,42 @@
 <script src="/gallery_js/waves.js"></script>
 
 
-    <!-- imagesloaded.pkgd.min js -->
-    <script src="/gallery_js/imagesloaded.pkgd.min.js"></script>
+<!-- imagesloaded.pkgd.min js -->
+<script src="/gallery_js/imagesloaded.pkgd.min.js"></script>
 
-    <!-- TimeCircles js -->
-    <script src="/gallery_js/TimeCircles.js"></script>
+<!-- TimeCircles js -->
+<script src="/gallery_js/TimeCircles.js"></script>
 
-    <!-- main js -->
+<!-- main js -->
 <script src="/gallery_js/main.js"></script>
 
 
 <script>
-
-var cbpAnimatedHeader = (function() {
+    var cbpAnimatedHeader = (function () {
         var docElem = document.documentElement,
-                header = document.querySelector( '.navbar-default' ),
-                didScroll = false,
-                changeHeaderOn = 200;
+            header = document.querySelector('.navbar-default'),
+            didScroll = false,
+            changeHeaderOn = 200;
+
         function init() {
-            window.addEventListener( 'scroll', function( event ) {
-                if( !didScroll ) {
+            window.addEventListener('scroll', function (event) {
+                if (!didScroll) {
                     didScroll = true;
-                    setTimeout( scrollPage, 250 );
+                    setTimeout(scrollPage, 250);
                 }
-            }, false );
+            }, false);
         }
+
         function scrollPage() {
             var sy = scrollY();
-            if ( sy >= changeHeaderOn ) {
+            if (sy >= changeHeaderOn) {
                 $(header).addClass('navbar-scroll')
-            }
-            else {
+            } else {
                 $(header).removeClass('navbar-scroll')
             }
             didScroll = false;
         }
+
         function scrollY() {
             return window.pageYOffset || docElem.scrollTop;
         }
@@ -104,7 +105,7 @@ var cbpAnimatedHeader = (function() {
     // Activate WOW.js plugin for animation on scrol
     new WOW().init();
 
-    
+
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
