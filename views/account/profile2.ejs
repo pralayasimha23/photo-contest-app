@@ -161,7 +161,7 @@
                     <div class="form-group row">
                       <label class="col-md-3 col-form-label font-weight-bold text-right" for="email">name</label>
                       <div class="col-md-7">
-                        <input class="form-control" type="text" name="name" id="email" value="<%=user.profile.name%>"
+                        <input class="form-control" type="text" name="name" id="name" value="<%=user.profile.name%>"
                           autofocus autocomplete="name" required>
                       </div>
                     </div>
@@ -179,14 +179,14 @@
                         <div class="form-check form-check-inline">
 
                           <input class="form-check-input" type="radio" checked="<%=user.profile.gender='female'%>"
-                            name="gender" id="male" value='female' data-toggle='radio'>
+                            name="gender" id="female" value='female' data-toggle='radio'>
 
                           <label class="form-check-label">Female</label>
                         </div>
 
                         <div class="form-check form-check-inline">
                           <input class="form-check-input" type="radio" checked="<%=user.profile.gender='other'%>"
-                            name="gender" id="male" value='other' data-toggle='radio'>
+                            name="gender" id="other" value='other' data-toggle='radio'>
 
                           <label class="form-check-label">Other</label>
                         </div>
