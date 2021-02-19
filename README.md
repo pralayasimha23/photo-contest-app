@@ -1,4 +1,10 @@
 # super
+<<<<<<< HEAD
+=======
+
+#Live Demo url :<a href="https://clixmania.herokuapp.com" rel="nofollow">clixmania.herokuapp.com </a>
+To use this script in developement, start using "nodemon app.js"
+>>>>>>> e50067439d0f7e478d10d3048612fe79122b0355
 
 Step1: Download the zip file and unzip
 
