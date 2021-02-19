@@ -9,9 +9,8 @@ const {
 const {
   OAuth2Strategy: GoogleStrategy
 } = require('passport-google-oauth');
-const {
-  Strategy: LinkedInStrategy
-} = require('passport-linkedin-oauth2');
+
+
 const {
   Strategy: OpenIDStrategy
 } = require('passport-openid');

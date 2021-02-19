@@ -50,7 +50,8 @@ var photoSchema = new Schema({
     type: Boolean,
     default: false,
 
-  }
+  },
+  Plagarisam : Number, default: 0,
 
 });
 

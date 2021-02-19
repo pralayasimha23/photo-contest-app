@@ -2,7 +2,7 @@
  * Module dependencies.
  */
 const express = require('express');
-const puppeteer = require('puppeteer');
+const http = require('http');
 const compression = require('compression');
 const session = require('express-session');
 const bodyParser = require('body-parser');
@@ -18,7 +18,7 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const expressip = require('express-ip');
 const expressStatusMonitor = require('express-status-monitor');
-const reverseImageSearch = require('node-reverse-image-search');
+
 // const sass = require('node-sass-middleware');
 // const multer = require('multer');
 const ejs = require("ejs");
@@ -249,8 +249,6 @@ app.get('/photoapp/:slug', adminController.getEntriesCollection);
 app.post('/photoapp/:slug', leadcollectionController.postEntriesCollection);
 // app.get('/photoapp/:slug/success',  leadcollectionController.submitSuccess);
 
-app.post('/voteverification', leadcollectionController.postPhotoVoteVerification);
-app.post('/voteverificationtoken/', leadcollectionController.postPhotoVoteVerificationToken);
 
 // gallery
 
@@ -321,5 +319,7 @@ app.listen(app.get('port'), () => {
   console.log('%s App is running at http://localhost:%d in %s mode', chalk.green('✓'), app.get('port'), app.get('env'));
   console.log('  Press CTRL-C to stop\n');
 });
+
+
 
 module.exports = app;

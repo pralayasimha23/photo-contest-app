@@ -260,6 +260,8 @@
             )
           $(".msgsubmit").delay(2000).fadeOut('slow');
 
+          grecaptcha.reset();
+
           //  $("#contactMesubmit").html("Entry successfully sent")
           console.log("SUCCESS : ", data);
 

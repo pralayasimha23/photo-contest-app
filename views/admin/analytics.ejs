@@ -6,6 +6,12 @@
         /* 80% of window height */
         height: 500px;
     }
+
+    .progress {
+        border-radius: 3px;
+        height: 8px;
+        margin-top: 7px
+    }
 </style>
 
 <div class="wrapper wrapper-content animated fadeInRight">
@@ -129,7 +135,7 @@
                 <div class="ibox-content">
 
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover dataTables-example">
+                        <table class="table table-striped table-bordered table-hover dataTables-example text-center">
                             <thead>
                                 <tr>
                                     <th>Photo</th>
@@ -137,6 +143,7 @@
                                     <th>No .of Likes</th>
                                     <th>Status</th>
                                     <th>Select The winner</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -156,6 +163,7 @@
                                         <button class="btn btn-danger btn-sm mr-1 delete-btn " id="<%=photo.id %>">
                                             Delete</i></button>
                                     </td>
+
                                     <%  } else if (!photo.done){ %>
                                     <td class="center"> Not Selected</td>
                                     <td>
@@ -169,6 +177,7 @@
                                             Delete</i></button>
 
                                     </td>
+
 
 
                                     <% } %>

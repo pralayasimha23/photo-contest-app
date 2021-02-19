@@ -12,8 +12,8 @@ const {
   CredentialListMappingInstance
 } = require('twilio/lib/rest/api/v2010/account/sip/domain/credentialListMapping');
 
-const reverseImageSearch = require('node-reverse-image-search');
-const puppeteer = require('puppeteer');
+
+
 
 exports.getCampaign = (req, res) => {
   if (!req.user) {
@@ -197,17 +197,16 @@ exports.getAnalytics = (req, res) => {
                   $sum: "$likes_count"
                 },
 
-
-
               }
             }
           ],
+
           function (err, result) {
 
             // PhotoEntries.aggregate([{ $group: {_id: "$CampaignId",Participants: { $size: "$Name" } }} ]{   
 
 
-
+        
 
             if (req.user && req.user.role == 'Admin' && count >= 1) {
 
@@ -217,7 +216,9 @@ exports.getAnalytics = (req, res) => {
                 campaign: campaign,
                 photolist: photos,
                 Count: count,
+
                 Totallikes: result[0].Totallikes,
+              
               });
             } else {
 
@@ -228,9 +229,9 @@ exports.getAnalytics = (req, res) => {
 
             }
 
-
-
           })
+
+
 
       });
     });
