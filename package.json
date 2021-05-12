@@ -41,7 +41,7 @@
     "googleapis": "^67.1.0",
     "jquery": "^3.5.1",
     "lob": "^6.1.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
     "lusca": "^1.6.1",
     "mailchecker": "^4.0.3",
