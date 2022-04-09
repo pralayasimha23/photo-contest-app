@@ -47,7 +47,7 @@
     "mailchecker": "^4.0.7",
     "masonry-layout": "^4.2.2",
     "module": "^1.2.5",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "mongoose": "^5.12.11",
     "mongoose-slug-generator": "^1.0.4",
     "morgan": "^1.10.0",
