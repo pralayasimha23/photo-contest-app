@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/pralayasimha23/super#readme",
   "dependencies": {
-    "a": "^2.1.2",
+    "a": "^3.0.1",
     "axios": "^0.21.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
